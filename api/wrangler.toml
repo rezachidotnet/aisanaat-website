@@ -1,0 +1,11 @@
+name = "fanasakht-brief"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# The website's origin(s), comma-separated. Only requests from these are accepted.
+ALLOWED_ORIGIN = "https://fanasakht.ir"
+
+# Secrets (not stored here). Set once with:
+#   npx wrangler secret put BOT_TOKEN
+#   npx wrangler secret put CHAT_ID
