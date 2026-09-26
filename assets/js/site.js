@@ -2,10 +2,10 @@
 
 // Problem brief delivery. See api/README.md.
 // Relay (api/) that posts each brief to the owner's Bale chat.
-// PUBLIC_BRIEF_ENDPOINT: SET AT DEPLOY to the public relay address, e.g. "https://fanasakht.ir/api/brief".
-// While it's empty (local testing), the relay is expected on the same machine as the page, port 8787,
-// so it works from localhost and from other devices on the network (e.g. http://10.101.176.20:8765).
-const PUBLIC_BRIEF_ENDPOINT = "";
+// PUBLIC_BRIEF_ENDPOINT: the public relay address. On Vercel it's the function api/brief.js on the same host.
+// Set it to "" for local testing with api/server.js: the relay is then expected on the same machine as the
+// page, port 8787, so it works from localhost and from other devices on the network (e.g. http://10.101.176.20:8765).
+const PUBLIC_BRIEF_ENDPOINT = "/api/brief";
 const BRIEF_ENDPOINT = PUBLIC_BRIEF_ENDPOINT || `http://${location.hostname}:8787/api/brief`;
 
 // Iranian phone number (mobile or landline): Persian/Arabic digits, spaces, dashes and +98/0098 accepted.

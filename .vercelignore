@@ -1,0 +1,7 @@
+# Kept out of the Vercel deployment: internal notes, the standalone Node/Cloudflare relay setups, secrets.
+# api/brief.js and api/worker.js are deployed (the Vercel Function and the relay logic it uses).
+*.md
+api/server.js
+api/wrangler.toml
+api/.env*
+api/.dev.vars
