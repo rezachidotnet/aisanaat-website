@@ -27,17 +27,17 @@
 
   /* Cool grays */
   --ink: #0B1F33;
-  --text: #3B4B5D;
-  --muted: #6E7C8C;
-  --faint: #A5B0BC;
+  --text: #2E3D4F;
+  --muted: #5B6A7B;
+  --faint: #98A4B1;
   --line: #E4E9EF;
   --line-strong: #CCD5DF;
   --bg: #FFFFFF;
   --bg-alt: #F5F7F9;
 
   /* On dark */
-  --d-text: #C3CFDC;
-  --d-muted: #7F93A8;
+  --d-text: #CDD8E4;
+  --d-muted: #8FA2B6;
   --d-line: rgba(255, 255, 255, 0.10);
   --d-line-strong: rgba(255, 255, 255, 0.20);
 
@@ -48,8 +48,8 @@
   --fs-h2: clamp(1.9rem, 1.2rem + 2.6vw, 3.4rem);
   --fs-h3: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
   --fs-lead: clamp(1.05rem, 0.98rem + 0.35vw, 1.28rem);
-  --fs-body: 1rem;
-  --fs-small: 0.875rem;
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
   --fs-micro: 0.72rem;
 
   --lh-tight: 1.25;
