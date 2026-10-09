@@ -480,7 +480,7 @@ body:has(.enq[open]) { overflow: hidden; }
 .footer__bot a:hover { color: var(--text); }
 
 /* ── Responsive ── */
-@media (max-width: 1280px) { .hero__note { display: none; } }
+@media (max-width: 1360px) { .hero__note { display: none; } }
 @media (max-width: 1080px) {
   .phero__grid, .prod, .brief, .intro { grid-template-columns: 1fr; }
   .intro { gap: var(--s-4); }
