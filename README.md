@@ -1,9 +1,10 @@
-# فناساخت — website
+# نردبان (Ladder) — website (aisanaat.ir)
 
 A static site: HTML, CSS, vanilla JS, with no build step and no external requests (the font is self-hosted).
 
 ```
 index.html              Home page
+products/*.html         Product pages (مناقصه‌بان، استیتر، برآوردگر سازهٔ فضایی)
 assets/css/tokens.css   Design tokens (colors, type, spacing, motion)
 assets/css/site.css     Components and sections
 assets/js/site.js       Hero animation, document demo, problem brief, menu

@@ -1,4 +1,5 @@
-/* فناساخت — design tokens. Every page imports this file first.
+/* نردبان (Ladder) — design tokens. Liquid glass over a living galaxy.
+   Two palettes (nebula, aurora) × two modes (dark, light), set on <html data-theme data-palette>.
    Documented in DESIGN_SYSTEM.md. Change values here, not in components. */
 
 @font-face {
@@ -15,61 +16,120 @@
   font-display: swap;
 }
 
+/* Animatable colors, so palette and mode changes melt instead of snapping */
+@property --a1 { syntax: "<color>"; inherits: true; initial-value: #A78BFA; }
+@property --a2 { syntax: "<color>"; inherits: true; initial-value: #F472B6; }
+@property --a3 { syntax: "<color>"; inherits: true; initial-value: #60A5FA; }
+@property --bg { syntax: "<color>"; inherits: true; initial-value: #07051A; }
+@property --n1 { syntax: "<color>"; inherits: true; initial-value: #6D28D9; }
+@property --n2 { syntax: "<color>"; inherits: true; initial-value: #DB2777; }
+@property --n3 { syntax: "<color>"; inherits: true; initial-value: #1D4ED8; }
+
 :root {
-  /* Brand */
-  --navy: #0B1F33;
-  --navy-2: #102A44;
-  --navy-3: #1A3A5A;
-  --blue: #1677FF;
-  --blue-deep: #0A4FD1;
-  --blue-light: #5AA2FF;        /* blue on navy backgrounds */
-  --blue-tint: #EAF2FF;
+  /* ── Nebula · dark (default) ── */
+  --bg: #07051A;
+  --n1: #6D28D9; --n2: #DB2777; --n3: #1D4ED8;          /* nebula clouds */
+  --a1: #A78BFA; --a2: #F472B6; --a3: #60A5FA;          /* accents */
+  --on-accent: #0E0821;
+  --text: #F5F3FF;
+  --text-2: rgba(237, 233, 255, 0.76);
+  --text-3: rgba(237, 233, 255, 0.52);
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.24);
+  --glass: rgba(255, 255, 255, 0.055);
+  --glass-strong: rgba(255, 255, 255, 0.10);
+  --glass-solid: rgba(20, 14, 48, 0.72);
+  --glass-edge: rgba(255, 255, 255, 0.20);
+  --glass-hi: rgba(255, 255, 255, 0.38);
+  --glass-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.65);
+  --screen: rgba(10, 7, 30, 0.62);                      /* product demo screens */
+  --star: 255, 255, 255;
+  --star-alpha: 1;
 
-  /* Cool grays */
-  --ink: #0B1F33;
-  --text: #2E3D4F;
-  --muted: #5B6A7B;
-  --faint: #98A4B1;
-  --line: #E4E9EF;
-  --line-strong: #CCD5DF;
-  --bg: #FFFFFF;
-  --bg-alt: #F5F7F9;
-
-  /* On dark */
-  --d-text: #CDD8E4;
-  --d-muted: #8FA2B6;
-  --d-line: rgba(255, 255, 255, 0.10);
-  --d-line-strong: rgba(255, 255, 255, 0.20);
+  --grad: linear-gradient(115deg, var(--a1), var(--a2) 55%, var(--a3));
 
   /* Type */
   --font: "Estedad", system-ui, sans-serif;
-
-  --fs-display: clamp(2.4rem, 1.1rem + 4.9vw, 5.4rem);
-  --fs-h2: clamp(1.9rem, 1.2rem + 2.6vw, 3.4rem);
-  --fs-h3: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
-  --fs-lead: clamp(1.05rem, 0.98rem + 0.35vw, 1.28rem);
+  --fs-display: clamp(2.6rem, 1.2rem + 5.4vw, 6rem);
+  --fs-h2: clamp(2.1rem, 1rem + 3.8vw, 4.4rem);
+  --fs-h3: clamp(1.15rem, 1rem + 0.5vw, 1.45rem);
+  --fs-lead: clamp(1.05rem, 0.98rem + 0.35vw, 1.25rem);
   --fs-body: 1.0625rem;
-  --fs-small: 0.9rem;
-  --fs-micro: 0.72rem;
-
-  --lh-tight: 1.25;
+  --lh-tight: 1.28;
   --lh-body: 1.95;
 
   /* Spacing (4px base) */
   --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
   --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 144px;
-  --section: clamp(88px, 6vw + 60px, 168px);
+  --section: clamp(88px, 6vw + 60px, 160px);
 
   /* Grid */
   --max: 1240px;
   --gutter: clamp(16px, 4vw, 40px);
 
   /* Shape */
-  --radius: 2px;
+  --r-control: 14px;
+  --r-card: 22px;
+  --r-panel: 30px;
 
   /* Motion */
   --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
-  --t-fast: 180ms;
-  --t-base: 420ms;
+  --spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --t-fast: 200ms;
+  --t-base: 480ms;
   --t-slow: 900ms;
+  --t-theme: 900ms;
+
+  color-scheme: dark;
+}
+
+/* ── Aurora · dark ── */
+:root[data-palette="aurora"] {
+  --bg: #02131A;
+  --n1: #0F766E; --n2: #4D7C0F; --n3: #0369A1;
+  --a1: #2DD4BF; --a2: #A3E635; --a3: #38BDF8;
+  --on-accent: #022222;
+  --text: #ECFEFF;
+  --text-2: rgba(220, 250, 248, 0.76);
+  --text-3: rgba(220, 250, 248, 0.52);
+  --glass-solid: rgba(4, 30, 36, 0.74);
+  --screen: rgba(2, 20, 26, 0.64);
+}
+
+/* ── Nebula · light ── */
+:root[data-theme="light"] {
+  --bg: #F7F4FF;
+  --n1: #C4B5FD; --n2: #FBCFE8; --n3: #BFDBFE;
+  --a1: #7C3AED; --a2: #DB2777; --a3: #2563EB;
+  --on-accent: #FFFFFF;
+  --text: #17112E;
+  --text-2: rgba(23, 17, 46, 0.74);
+  --text-3: rgba(23, 17, 46, 0.52);
+  --line: rgba(23, 17, 46, 0.10);
+  --line-strong: rgba(23, 17, 46, 0.20);
+  --glass: rgba(255, 255, 255, 0.42);
+  --glass-strong: rgba(255, 255, 255, 0.62);
+  --glass-solid: rgba(255, 255, 255, 0.82);
+  --glass-edge: rgba(255, 255, 255, 0.85);
+  --glass-hi: rgba(255, 255, 255, 0.95);
+  --glass-shadow: 0 30px 60px -32px rgba(60, 40, 120, 0.35);
+  --screen: rgba(22, 16, 48, 0.86);
+  --star: 124, 58, 237;
+  --star-alpha: 0.35;
+  color-scheme: light;
+}
+
+/* ── Aurora · light ── */
+:root[data-theme="light"][data-palette="aurora"] {
+  --bg: #F1FBF8;
+  --n1: #99F6E4; --n2: #D9F99D; --n3: #BAE6FD;
+  --a1: #0D9488; --a2: #65A30D; --a3: #0284C7;
+  --text: #062420;
+  --text-2: rgba(6, 36, 32, 0.74);
+  --text-3: rgba(6, 36, 32, 0.52);
+  --line: rgba(6, 36, 32, 0.10);
+  --line-strong: rgba(6, 36, 32, 0.20);
+  --glass-shadow: 0 30px 60px -32px rgba(10, 80, 70, 0.30);
+  --screen: rgba(4, 28, 30, 0.86);
+  --star: 13, 148, 136;
 }

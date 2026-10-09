@@ -1,5 +1,5 @@
-// فناساخت — problem brief → Bale.
-// Receives the brief from the website and posts it to the owner's Bale chat through a bot.
+// نردبان (Ladder) — website leads → Bale.
+// Receives the problem brief or a product enquiry from the website and posts it to the owner's Bale chat through a bot.
 // The bot token never reaches the browser.
 // Runs as a Cloudflare Worker (this file) or as a plain Node server (server.js).
 //
@@ -9,7 +9,8 @@
 //   ALLOWED_ORIGIN   var      the site's origin(s), comma-separated, e.g. https://fanasakht.ir
 //   BALE_API         var      optional, only for tests (default https://tapi.bale.ai)
 
-const LIMITS = { problem: 1200, process: 1200, data: 1200, name: 120, reach: 30 };
+const LIMITS = { problem: 1200, process: 1200, data: 1200, name: 120, reach: 30,
+  product: 60, company: 120, email: 120, need: 1200, when: 20, page: 120 };
 
 // Same rule as the site: an Iranian phone number, normalized to 11 digits (e.g. 09121234567), or "".
 function normalizePhone(raw) {
@@ -49,21 +50,42 @@ export default {
     const f = {};
     for (const k in LIMITS) f[k] = String(body[k] || "").trim().slice(0, LIMITS[k]);
     f.reach = normalizePhone(f.reach);
-    if (f.problem.length < 12 || !f.reach) return json({ error: "fields" }, 422, cors);
-    const caps = Array.isArray(body.caps) ? body.caps.slice(0, 8).map((c) => String(c).slice(0, 40)) : [];
+    if (!f.reach) return json({ error: "fields" }, 422, cors);
+    if (f.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) f.email = "";
 
     // Plain text (no parse_mode), so visitor input can't inject formatting or links.
-    const text = [
-      "مسئلهٔ جدید از سایت فناساخت",
-      "",
-      "مسئله: " + f.problem,
-      "فرایند: " + (f.process || "-"),
-      "داده: " + (f.data || "-"),
-      "",
-      "نام: " + (f.name || "-"),
-      "شماره تماس: " + f.reach,
-      caps.length ? "توانمندی‌های مرتبط: " + caps.join("، ") : "",
-    ].filter((l, i, a) => l !== "" || a[i - 1] !== "").join("\n");
+    let lines;
+    if (body.kind === "enquiry") {
+      if (!f.name || !f.product) return json({ error: "fields" }, 422, cors);
+      lines = [
+        "درخواست اطلاعات از سایت نردبان",
+        "",
+        "دربارهٔ: " + f.product,
+        "نیاز: " + (f.need || "-"),
+        "",
+        "نام: " + f.name,
+        "شرکت: " + (f.company || "-"),
+        "شماره تماس: " + f.reach,
+        "ایمیل: " + (f.email || "-"),
+        "زمان مناسب تماس: " + (f.when || "-"),
+        "صفحه: " + (f.page || "-"),
+      ];
+    } else {
+      if (f.problem.length < 12) return json({ error: "fields" }, 422, cors);
+      const caps = Array.isArray(body.caps) ? body.caps.slice(0, 8).map((c) => String(c).slice(0, 40)) : [];
+      lines = [
+        "مسئلهٔ جدید از سایت نردبان",
+        "",
+        "مسئله: " + f.problem,
+        "فرایند: " + (f.process || "-"),
+        "داده: " + (f.data || "-"),
+        "",
+        "نام: " + (f.name || "-"),
+        "شماره تماس: " + f.reach,
+        caps.length ? "محصول یا خدمت مرتبط: " + caps.join("، ") : "",
+      ];
+    }
+    const text = lines.filter((l, i, a) => l !== "" || a[i - 1] !== "").join("\n");
 
     const base = env.BALE_API || "https://tapi.bale.ai";
     let sent;
