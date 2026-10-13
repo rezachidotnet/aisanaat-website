@@ -540,3 +540,6 @@ body:has(.enq[open]) { overflow: hidden; }
   .sticky-cta .btn { width: 100%; }
   .has-sticky .footer { padding-bottom: 110px; }
 }
+
+/* Team (about) */
+.team__av { display: grid; place-items: center; width: 56px; height: 56px; margin-bottom: var(--s-4); border-radius: 50%; background: var(--grad); color: #fff; font-weight: 800; font-size: 0.95rem; }
