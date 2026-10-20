@@ -506,7 +506,7 @@ const enquiry = (function buildEnquiry() {
     const p = PROCS[cur], n = p.steps.length;
     const c = (r) => p.steps.filter((s) => s[2] === r).length;
     sum.innerHTML = mode === "today"
-      ? `امروز: ${fa(n)} قدم، همه دستی.<span>بین ${p.tools} دست‌به‌دست می‌شود.</span>`
+      ? `امروز: ${fa(n)} قدم، همه با نیروی انسانی.<span>بین ${p.tools} دست‌به‌دست می‌شود.</span>`
       : `با سیستم: ${fa(c("auto"))} قدم خودکار، ${fa(c("ai"))} قدم با هوش مصنوعی و ${fa(c("human"))} تصمیم که با شما می‌ماند.<span>هر خروجی هوش مصنوعی منبعش را نشان می‌دهد و بدون تأیید شما اقدامی انجام نمی‌شود.</span>`;
   }
 
