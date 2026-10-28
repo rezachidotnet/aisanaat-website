@@ -25,8 +25,8 @@ p{margin:0;max-width:62ch}
 .muted{color:var(--muted)}
 
 /* deck */
-.deck{direction:rtl;position:relative;height:100%}
-.slide{position:absolute;inset:0;overflow-y:auto;display:flex;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 104px;visibility:hidden;opacity:0}
+.deck{direction:rtl;text-align:right;position:relative;height:100%;width:100%}
+.slide{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;-webkit-overflow-scrolling:touch;overflow-y:auto;display:flex;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 104px;visibility:hidden;opacity:0}
 .slide.on{visibility:visible;opacity:1}
 .slide > .wrap{margin:auto;width:100%;max-width:1180px}
 .nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:5;direction:rtl;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:99px;
@@ -44,7 +44,7 @@ p{margin:0;max-width:62ch}
 
 /* hero */
 .hero{padding:clamp(26px,5vw,64px);display:flex;flex-direction:column;gap:28px;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:-40% -10% auto auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(61,139,255,.45),transparent);pointer-events:none}
+.hero::before{content:"";position:absolute;top:-40%;right:-10%;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(61,139,255,.45),transparent);pointer-events:none}
 .meta{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;position:relative}
 .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:99px;border:1px solid var(--edge);background:rgba(255,255,255,.05);color:var(--muted);white-space:nowrap}
 .chip.amber{color:var(--amber);border-color:rgba(255,178,26,.45);background:rgba(255,178,26,.08)}
@@ -65,8 +65,8 @@ p{margin:0;max-width:62ch}
 .body{display:flex;flex-direction:column;gap:20px;min-width:0}
 .lead{font-size:19px;line-height:1.8}
 ul.plain{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
-ul.plain li{position:relative;padding-inline-start:20px}
-ul.plain li::before{content:"";position:absolute;inset-inline-start:0;top:.75em;width:8px;height:8px;border-radius:2px;background:var(--blue);box-shadow:0 0 10px var(--blue)}
+ul.plain li{position:relative;padding-right:20px}
+ul.plain li::before{content:"";position:absolute;right:0;top:.75em;width:8px;height:8px;border-radius:2px;background:var(--blue);box-shadow:0 0 10px var(--blue)}
 
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .card{padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
@@ -187,14 +187,14 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(-
 @media print{
   html,body{height:auto;overflow:visible}
   .deck{height:auto}
-  .slide{position:relative;inset:auto;visibility:visible;opacity:1;min-height:100vh;overflow:visible;padding-block:40px;break-after:page}
+  .slide{position:relative;top:auto;right:auto;bottom:auto;left:auto;visibility:visible;opacity:1;min-height:100vh;overflow:visible;padding-block:40px;break-after:page}
   .slide > .wrap{animation:none}
   .nav,.bar,.formbox,.pick{display:none!important}
   .accept{grid-template-columns:1fr}
 }
 </style>
 
-<div class="deck" lang="fa" id="deck">
+<div class="deck" lang="fa" dir="rtl" id="deck">
 
 <section class="slide"><div class="wrap">
 <header class="hero glass">
