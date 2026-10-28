@@ -1,0 +1,511 @@
+<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><title>پروپوزال هاب صادرات</title><link rel="stylesheet" href="fonts.css"><style>body{margin:0}[hidden]{display:none!important}</style></head><body><style>
+/* Layout: a slideshow over a deep-sea night lit by port amber and open-water blue. Each slide is a label rail beside a content column on glass panes. Single dark look on purpose: glass needs a dark sea behind it. */
+:root{
+  --sea:#050a17; --ink:#eef3ff; --muted:#9db0cf; --dim:#6a7c9c;
+  --blue:#3d8bff; --cyan:#3fd8ff; --amber:#ffb21a; --amber-ink:#1d1300; --ok:#38e09a;
+  --glass:rgba(255,255,255,.055); --glass-hi:rgba(255,255,255,.09); --edge:rgba(255,255,255,.13); --edge-hi:rgba(255,255,255,.28);
+  --display:'Alexandria','Vazirmatn',Tahoma,sans-serif;
+  --body:'Vazirmatn',Tahoma,sans-serif;
+  --r:22px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--sea);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85;overflow:hidden;
+  background-image:
+    radial-gradient(60vw 50vw at 95% -5%, rgba(61,139,255,.38), transparent 60%),
+    radial-gradient(45vw 40vw at 0% 30%, rgba(255,178,26,.20), transparent 60%),
+    radial-gradient(55vw 45vw at 100% 75%, rgba(63,216,255,.16), transparent 60%),
+    radial-gradient(50vw 40vw at 10% 105%, rgba(61,139,255,.24), transparent 60%)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h2{font-size:clamp(24px,3.2vw,34px);font-weight:800;line-height:1.45}
+h3{font-size:18px;font-weight:700;line-height:1.5}
+p{margin:0;max-width:62ch}
+.en{unicode-bidi:isolate;direction:ltr;display:inline-block}
+.muted{color:var(--muted)}
+
+/* deck */
+.deck{direction:rtl;position:relative;height:100%}
+.slide{position:absolute;inset:0;overflow-y:auto;display:flex;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 104px;visibility:hidden;opacity:0}
+.slide.on{visibility:visible;opacity:1}
+.slide > .wrap{margin:auto;width:100%;max-width:1180px}
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:5;direction:rtl;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:99px;
+  background:rgba(10,18,36,.7);border:1px solid var(--edge);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.nav button{all:unset;cursor:pointer;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:18px;color:var(--ink);border:1px solid var(--edge)}
+.nav button:hover{border-color:var(--edge-hi)}
+.nav button:disabled{opacity:.3;cursor:default}
+.nav button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.count{font-variant-numeric:tabular-nums;font-size:14px;color:var(--muted);min-width:64px;text-align:center}
+.bar{position:fixed;top:env(safe-area-inset-top,0px);right:0;height:3px;background:var(--amber);box-shadow:0 0 12px var(--amber);z-index:5}
+
+.glass{background:linear-gradient(160deg,var(--glass-hi),var(--glass));border:1px solid var(--edge);border-radius:var(--r);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 20px 50px -20px rgba(0,0,0,.6);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%)}
+
+/* hero */
+.hero{padding:clamp(26px,5vw,64px);display:flex;flex-direction:column;gap:28px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-40% -10% auto auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(61,139,255,.45),transparent);pointer-events:none}
+.meta{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;position:relative}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:99px;border:1px solid var(--edge);background:rgba(255,255,255,.05);color:var(--muted);white-space:nowrap}
+.chip.amber{color:var(--amber);border-color:rgba(255,178,26,.45);background:rgba(255,178,26,.08)}
+.hero h1{font-size:clamp(34px,6.4vw,68px);font-weight:800;line-height:1.3;position:relative;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--amber);text-shadow:0 0 40px rgba(255,178,26,.45)}
+.hero p{font-size:18px;color:var(--muted);position:relative}
+.lane{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;position:relative}
+.lane div{padding:16px 18px;border-radius:16px;border:1px solid var(--edge);background:rgba(5,10,23,.35);display:flex;flex-direction:column;gap:2px}
+.lane div:last-child{border-color:rgba(255,178,26,.5);box-shadow:0 0 30px -10px rgba(255,178,26,.6)}
+.lane small{font-size:12px;color:var(--dim);letter-spacing:.04em}
+.lane b{font-family:var(--display);font-weight:700;font-size:16px}
+
+/* section: label rail + content */
+.sec{display:grid;grid-template-columns:260px minmax(0,1fr);gap:36px;align-items:start}
+.sec.wide{grid-template-columns:1fr;gap:20px}
+.rail{display:flex;flex-direction:column;gap:10px;padding-top:6px}
+.rail .k{font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:.04em}
+.body{display:flex;flex-direction:column;gap:20px;min-width:0}
+.lead{font-size:19px;line-height:1.8}
+ul.plain{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+ul.plain li{position:relative;padding-inline-start:20px}
+ul.plain li::before{content:"";position:absolute;inset-inline-start:0;top:.75em;width:8px;height:8px;border-radius:2px;background:var(--blue);box-shadow:0 0 10px var(--blue)}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card .tag{align-self:flex-start;font-size:12px;font-weight:700;color:var(--cyan);border:1px solid rgba(63,216,255,.35);border-radius:99px;padding:2px 12px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:14.5px;margin:0}
+.kv dt{color:var(--dim)} .kv dd{margin:0}
+
+/* journey */
+.route{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.port{padding:18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.port .n{font-family:var(--display);font-weight:800;font-size:28px;line-height:1;color:var(--blue)}
+.port b{font-family:var(--display);font-size:16px}
+.port q{font-size:14px;color:var(--muted);quotes:"«" "»"}
+.port span{align-self:flex-start;font-size:13px;margin-top:4px;padding:3px 10px;border-radius:99px;background:rgba(61,139,255,.14);color:#bcd6ff}
+.port.key{border-color:rgba(255,178,26,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 40px -12px rgba(255,178,26,.7)}
+.port.key .n{color:var(--amber)}
+.port.key span{background:rgba(255,178,26,.16);color:#ffd88a}
+
+/* tables */
+.tbl{overflow-x:auto;padding:6px 8px}
+table{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:13px 14px;border-bottom:1px solid var(--edge);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-size:13px;color:var(--dim);font-weight:500}
+td.n{font-family:var(--display);font-weight:800;font-size:16px;color:var(--amber);white-space:nowrap}
+td .en{white-space:nowrap}
+
+.cols2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.box{padding:20px;display:flex;flex-direction:column;gap:10px}
+.box.out ul.plain li::before{background:var(--dim);box-shadow:none}
+.cost{font-family:var(--display);font-weight:800;font-size:20px;color:var(--amber)}
+
+/* pipeline */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:f}
+.flow li{padding:18px;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted);counter-increment:f}
+.flow li::before{content:counter(f,persian);font-family:var(--display);font-weight:800;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--blue);color:#fff;box-shadow:0 0 18px -2px var(--blue)}
+.flow b{font-family:var(--display);font-size:16px;color:var(--ink)}
+.flow .who{align-self:flex-start;font-size:12px;font-weight:700;padding:1px 10px;border-radius:99px;color:var(--cyan);border:1px solid rgba(63,216,255,.35)}
+.flow li.you{border-style:dashed}
+.flow li.you::before{background:transparent;border:1px solid var(--edge-hi);box-shadow:none}
+.flow li.you .who{color:var(--ink);border-color:var(--edge-hi)}
+.flow li.out{border-color:rgba(255,178,26,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 40px -12px rgba(255,178,26,.7)}
+.flow li.out::before{background:var(--amber);color:var(--amber-ink);box-shadow:0 0 18px -2px var(--amber)}
+.alert{padding:14px;border-radius:14px;background:rgba(5,10,23,.55);border:1px solid rgba(255,178,26,.45);font-size:14px;display:flex;flex-direction:column;gap:4px}
+.alert .h{color:var(--amber);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.phase{padding:18px;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+.phase b{font-family:var(--display);font-size:16px;color:var(--ink)}
+.phase small{color:var(--cyan);font-weight:700}
+.phase.now{border-color:rgba(255,178,26,.6)}
+.phase.now small{color:var(--amber)}
+.gate{font-size:13px;color:var(--ink);margin-top:auto;padding-top:8px;border-top:1px solid var(--edge)}
+
+/* pricing */
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+.tier{all:unset;box-sizing:border-box;cursor:pointer;padding:22px;display:flex;flex-direction:column;gap:12px;color:var(--ink);font-family:var(--body);text-align:right;min-width:0;
+  background:linear-gradient(160deg,var(--glass-hi),var(--glass));border:1px solid var(--edge);border-radius:var(--r);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 rgba(255,255,255,.16)}
+.tier:hover{border-color:var(--edge-hi)}
+.tier:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.tier[aria-pressed="true"]{border-color:var(--amber);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 50px -14px rgba(255,178,26,.8)}
+.tier .name{font-family:var(--display);font-weight:800;font-size:20px;line-height:1.5;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.badge{white-space:nowrap;font-family:var(--body);font-size:12px;background:var(--amber);color:var(--amber-ink);padding:3px 12px;border-radius:99px;font-weight:700}
+.tier .note{font-size:14px;color:var(--muted)}
+.price{font-family:var(--display);font-size:26px;font-weight:800;color:var(--amber)}
+.price small{font-size:13px;color:var(--dim);font-weight:500}
+.tier ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;font-size:14px}
+.tier li{display:flex;justify-content:space-between;gap:10px;padding-bottom:5px;border-bottom:1px solid var(--edge)}
+.tier li.off{color:var(--dim)}
+.tier li b{white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums}
+.pick{text-align:center;font-size:14px;font-weight:700;padding:9px;border-radius:12px;border:1px solid var(--edge);color:var(--muted)}
+.tier[aria-pressed="true"] .pick{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+.small{font-size:14px;color:var(--muted)}
+
+/* accept */
+.accept{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
+.summary{padding:22px;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.summary div{display:flex;justify-content:space-between;gap:12px;padding-bottom:8px;border-bottom:1px solid var(--edge)}
+.summary div:last-child{border:0;padding:0}
+.summary b{font-family:var(--display);text-align:left}
+.terms{padding:4px 4px 0;font-size:14px;color:var(--muted)}
+.formbox{padding:22px;display:flex;flex-direction:column;gap:16px}
+form{display:flex;flex-direction:column;gap:14px}
+label{font-size:14px;display:flex;flex-direction:column;gap:6px;color:var(--muted)}
+label.chk{flex-direction:row;align-items:flex-start;gap:10px;color:var(--ink)}
+input[type=text],input[type=tel]{font:inherit;padding:12px 14px;border:1px solid var(--edge);border-radius:12px;background:rgba(5,10,23,.5);color:var(--ink)}
+input[type=checkbox]{accent-color:var(--amber);width:18px;height:18px;margin-top:5px}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.btn{font:inherit;font-family:var(--display);font-weight:700;font-size:16px;padding:13px 18px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--amber),#ffcd5e);color:var(--amber-ink);cursor:pointer;box-shadow:0 10px 30px -10px rgba(255,178,26,.8);text-align:center;text-decoration:none}
+.btn:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--edge-hi);font-size:14px;padding:11px 14px;box-shadow:none}
+.done{display:flex;flex-direction:column;gap:12px}
+.done b{font-family:var(--display);font-size:20px;color:var(--ok)}
+.done pre{white-space:pre-wrap;font:inherit;font-size:14px;background:rgba(5,10,23,.55);border:1px solid var(--edge);padding:12px;border-radius:12px;margin:0}
+.err{font-size:13px;color:#ff8a7a}
+.valid{font-size:13px;color:var(--dim)}
+
+@media (max-width:900px){
+  .sec{grid-template-columns:1fr;gap:16px}
+  .rail{padding-top:0}
+  .grid2,.tiers,.cols2,.accept{grid-template-columns:1fr}
+  .flow,.road,.route{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:520px){
+  .lane,.flow,.road,.route{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){
+  .slide{transition:opacity .35s ease,visibility .35s}
+  .slide.on > .wrap{animation:rise .45s ease both}
+  @keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+  .tier,.pick{transition:border-color .2s,box-shadow .2s,background .2s}
+  .bar{transition:width .35s ease}
+}
+/* print = PDF: every slide on its own page */
+@media print{
+  html,body{height:auto;overflow:visible}
+  .deck{height:auto}
+  .slide{position:relative;inset:auto;visibility:visible;opacity:1;min-height:100vh;overflow:visible;padding-block:40px;break-after:page}
+  .slide > .wrap{animation:none}
+  .nav,.bar,.formbox,.pick{display:none!important}
+  .accept{grid-template-columns:1fr}
+}
+</style>
+
+<div class="deck" lang="fa" id="deck">
+
+<section class="slide"><div class="wrap">
+<header class="hero glass">
+  <div class="meta"><span class="chip amber">پیشنهاد همکاری</span><span class="chip">۶ آبان ۱۴۰۵</span><span class="chip"><span class="en">EH-1405-01</span></span></div>
+  <h1>جریان یکپارچه محتوا <em>مبتنی بر AI</em></h1>
+  <p>شما محتوای خام را می‌دهید؛ سیستم آن را بهبود می‌دهد، منتشر می‌کند و از مخاطبی که جذب می‌شود، لیست مشتریان ایده‌آل هاب را بیرون می‌کشد. این سند می‌گوید این سیستم چطور کار می‌کند و چه تحویل می‌گیرید.</p>
+  <div class="lane">
+    <div><small>ورودی</small><b>محتوای خام شما</b></div>
+    <div><small>سیستم</small><b>بهبود · انتشار · تشخیص مشتری</b></div>
+    <div><small>خروجی</small><b>لیست مشتریان ایده‌آل</b></div>
+  </div>
+</header>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">نیاز</span><h2>درک نیاز شما</h2></div>
+  <div class="body">
+    <p class="lead">محتوای خوب را خودتان دارید: تجربه‌ی واقعی صادرات. چیزی که کم است، سیستمی است که این محتوا را صیقل بدهد، منظم منتشر کند و بگوید چه کسی واقعاً مشتری است.</p>
+    <ul class="plain">
+      <li>ویدیو و متن خام منتشر نمی‌شود یا بدون زیرنویس، قلاب و قالب مناسب هر پلتفرم منتشر می‌شود.</li>
+      <li>انتشار منظم در اینستاگرام، لینکدین و بله وقت تیم را می‌گیرد و با شلوغی کار متوقف می‌شود.</li>
+      <li>کامنت و دایرکت زیاد است، اما معلوم نیست کدام تولیدکننده‌ی تازه‌کار است، کدام صادرکننده، کدام شرکت مدیریت صادرات و کدام مارکتر دیجیتال.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">سیستم</span><h2>از محتوای خام تا لیست مشتری</h2><p class="muted">شما فقط محتوا را می‌فرستید. بقیه‌ی مسیر را سیستم AI انجام می‌دهد.</p></div>
+  <div class="body">
+    <ol class="flow">
+      <li class="glass you"><span class="who">شما</span><b>تحویل محتوا</b>ویدیو، ویس یا متن خام را در بله برای بات می‌فرستید.</li>
+      <li class="glass"><span class="who">AI</span><b>بهبود</b>زیرنویس، قلاب اول، تدوین، کپشن و هشتگ؛ هر ورودی به چند قالب تبدیل می‌شود: ریلز، کاروسل، استوری و نسخه‌ی لینکدین.</li>
+      <li class="glass"><span class="who">AI</span><b>انتشار</b>پیش‌نمایش در بله با یک دکمه تأیید می‌شود و در زمان درست روی هر پلتفرم منتشر می‌شود.</li>
+      <li class="glass out"><span class="who">AI</span><b>خروجی ICP</b>هر کامنت و دایرکت با یکی از چهار مشتری ایده‌آل برچسب می‌خورد؛ سرنخ داغ فوری در بله، لیست کامل در فایل اکسل.</li>
+    </ol>
+    <div class="box glass"><h3>کار شما</h3><ul class="plain"><li>ارسال محتوای خام، حداقل طبق حجم بسته</li><li>تأیید یا رد هر پیش‌نمایش در بله، حداکثر ۴۸ ساعت</li><li>پیگیری سرنخ‌های لیست ICP</li></ul></div>
+    <p class="small">بسته‌ی «ردیاب ICP» فقط مرحله‌ی ۴ را روی پیج فعلی شما اجرا می‌کند؛ در «موتور کامل تولید محتوا مبتنی بر هوش مصنوعی» سیستم خودش هم محتوای بصری می‌سازد.</p>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">خروجی ICP</span><h2>لیست مشتری چطور به دست شما می‌رسد</h2><p class="muted">همه‌چیز در بله؛ ابزار تازه‌ای لازم نیست.</p></div>
+  <div class="body">
+    <div class="cols2">
+      <div class="box glass"><h3>۱. هشدار فوری در بله</h3><p class="muted">وقتی کسی نشانه‌ی مشتری واقعی دارد، بات همان لحظه یک کارت می‌فرستد تا تیم شما چند دقیقه بعد پیگیری کند.</p>
+        <div class="alert"><span class="h">ICP ۲ · صادرکننده‌ی کوچک · مرحله: مقایسه</span><span>@username: «برای صادرات به عراق هم کمک می‌کنید؟»</span><span class="muted">دلیل: درباره‌ی بازار جدید می‌پرسد و الان صادرات دارد</span><span class="muted">امتیاز سرنخ: ۸۲ از ۱۰۰ · [باز کردن گفتگو]</span></div></div>
+      <div class="box glass"><h3>۲. فایل اکسل دوره‌ای</h3><p class="muted">بات طبق بسته (ماهانه یا هفتگی) یک فایل اکسل در بله می‌فرستد. هر ردیف یک نفر است با این ستون‌ها:</p>
+        <div class="chips"><span class="chip">نام کاربری</span><span class="chip">پلتفرم</span><span class="chip">نوع ICP</span><span class="chip">مرحله‌ی مسیر</span><span class="chip">آنچه گفته</span><span class="chip">امتیاز سرنخ</span><span class="chip">تاریخ</span><span class="chip">لینک گفتگو</span></div></div>
+    </div>
+    <div class="cols2">
+      <div class="box glass"><h3>داده از کجا می‌آید</h3><ul class="plain"><li>کامنت و دایرکت اینستاگرام</li><li>پیام و عضویت در بات بله و تلگرام</li><li>بیوی پروفایل اینستاگرام، برای تشخیص دقیق‌تر</li></ul></div>
+      <div class="box glass"><h3>چه چیزی مشخص می‌شود</h3><p>برای هر نفر سه چیز: نوع مشتری (۱ تا ۴ یا خارج از ICP)، مرحله‌ی مسیر و امتیاز سرنخ از ۱۰۰.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">ICP</span><h2>چهار مشتری‌ای که سیستم پیدا می‌کند</h2><p class="muted">برچسب‌گذاری و خروجی لیست بر اساس همین چهار تعریف انجام می‌شود.</p></div>
+  <div class="body">
+    <div class="grid2">
+      <article class="card glass"><span class="tag">مشتری ۱ · اینستاگرام</span><h3>تولیدکننده‌ی تازه‌کار</h3>
+        <dl class="kv"><dt>درد</dt><dd>«نمی‌دانم از کجا شروع کنم»</dd><dt>نشانه</dt><dd>سؤال درباره‌ی گمرک، مجوز، قدم اول</dd><dt>پیشنهاد</dt><dd>قدم‌به‌قدم تا اولین محموله</dd></dl></article>
+      <article class="card glass"><span class="tag">مشتری ۲ · اینستاگرام و لینکدین</span><h3>صادرکننده‌ی کوچک</h3>
+        <dl class="kv"><dt>درد</dt><dd>وابستگی به یک بازار</dd><dt>نشانه</dt><dd>سؤال درباره‌ی بازار جدید، تعرفه، خریدار</dd><dt>پیشنهاد</dt><dd>بازار و خریدار جدید با ریسک کمتر</dd></dl></article>
+      <article class="card glass"><span class="tag">مشتری ۳ · لینکدین</span><h3>شرکت مدیریت صادرات</h3>
+        <dl class="kv"><dt>درد</dt><dd>تامین‌کننده‌ی مطمئن</dd><dt>نشانه</dt><dd>سؤال درباره‌ی ظرفیت، تامین، همکاری</dd><dt>پیشنهاد</dt><dd>شبکه‌ی بررسی‌شده، نه رقابت</dd></dl></article>
+      <article class="card glass"><span class="tag">مشتری ۴ · اینستاگرام و لینکدین</span><h3>مارکتر دیجیتال</h3>
+        <dl class="kv"><dt>درد</dt><dd>مشتری صادراتی پیدا نمی‌کند یا بازارش را نمی‌شناسد</dd><dt>نشانه</dt><dd>سؤال درباره‌ی همکاری، معرفی مشتری، کمیسیون</dd><dt>پیشنهاد</dt><dd>دسترسی به تولیدکننده‌ها و صادرکننده‌های هاب</dd></dl></article>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">مسیر</span><h2>هر محتوا برای کدام مرحله</h2><p class="muted">سیستم هر محتوای بهبودیافته را به یک مرحله‌ی مسیر مشتری وصل می‌کند تا بدانید کجا جا افتاده.</p></div>
+  <div class="body">
+    <ol class="route">
+      <li class="port glass"><span class="n">۱</span><b>ناآگاه</b><q>بازار داخلی کافیه</q><span>ریلز ← فالو</span></li>
+      <li class="port glass"><span class="n">۲</span><b>مسئله‌آگاه</b><q>به درد من می‌خوره؟</q><span>کاروسل ← ذخیره</span></li>
+      <li class="port glass"><span class="n">۳</span><b>جستجو</b><q>چطور؟ ریسکش؟</q><span>آموزش ← کامنت</span></li>
+      <li class="port glass key"><span class="n">۴</span><b>مقایسه</b><q>تنها یا هاب؟</q><span>روایت بنیان‌گذار ← دایرکت</span></li>
+      <li class="port glass"><span class="n">۵</span><b>تماس اول</b><q>اعتماد کنم؟</q><span>رضایت اعضا ← مشاوره</span></li>
+      <li class="port glass"><span class="n">۶</span><b>عضویت</b><q>قدم بعدی؟</q><span>اطلاعیه بله ← معرفی</span></li>
+    </ol>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">نتیجه</span><h2>موفقیت چه شکلی است</h2><p class="muted">با مشتری سنجیده می‌شود، نه با لایک.</p></div>
+  <div class="body">
+    <p>عدد هدف هر شاخص بعد از ماه اول، روی خط پایه‌ی واقعی تعیین می‌شود.</p>
+    <div class="tbl glass"><table>
+      <thead><tr><th>شاخص</th><th>چرا مهم است</th></tr></thead>
+      <tbody>
+        <tr><td>سرنخ ICP در لیست خروجی</td><td>مستقیم به عضو و درآمد وصل است</td></tr>
+        <tr><td>عضو جدید هاب</td><td>هدف نهایی</td></tr>
+        <tr><td>زمان از تحویل محتوا تا انتشار</td><td>سرعت سیستم</td></tr>
+        <tr><td>ذخیره، اشتراک و کامنت کلمه‌ی کلیدی</td><td>بهبود محتوا کار می‌کند؟</td></tr>
+        <tr><td>سهم هر ICP از مخاطب</td><td>رشد مخاطب درست</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">زمان‌بندی</span><h2>نقشه‌ی راه</h2><p class="muted">اولین انتشار هفته‌ی سوم، اولین لیست ICP ماه دوم.</p></div>
+  <div class="body">
+    <p>هر فاز بعد از تأیید شما در دروازه‌ی قبلی شروع می‌شود.</p>
+    <div class="road">
+      <div class="phase glass"><small>هفته ۱ تا ۲</small><b>راه‌اندازی</b>تعریف ICPها، قالب‌های بصری، بات بله، اتصال حساب‌ها<span class="gate">تأیید قالب‌ها</span></div>
+      <div class="phase glass now"><small>هفته ۳ تا ۴</small><b>اولین دسته</b>بهبود و انتشار اولین ۱۰ محتوای شما<span class="gate">تأیید لحن و کیفیت</span></div>
+      <div class="phase glass"><small>ماه ۲</small><b>سیستم کامل</b>جریان هفتگی طبق بسته و اولین خروجی ICP<span class="gate">گزارش خط پایه</span></div>
+      <div class="phase glass"><small>ماه ۳</small><b>بهینه‌سازی</b>دقیق‌تر کردن تشخیص ICP، تمرکز روی قالب برنده<span class="gate">بازبینی سه‌ماهه</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec wide">
+  <div class="rail"><span class="k">سرمایه‌گذاری</span><h2>بسته‌ها</h2><p class="muted">قیمت هر بسته هزینه‌ی یک‌باره‌ی ساخت سیستم است. هزینه‌ی سرور و API جداگانه است (اسلاید بعد).</p></div>
+  <div class="body">
+    <div class="tiers" id="tiers"></div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">زیرساخت</span><h2>سرور مورد نیاز هر بسته</h2><p class="muted">قیمت بسته‌ها فقط هزینه‌ی ساخت این جریان است. هزینه‌ی سرور و API ماهانه و جداگانه، بر عهده‌ی شماست.</p></div>
+  <div class="body">
+    <div class="tbl glass"><table>
+      <thead><tr><th>بسته</th><th>CPU</th><th>RAM</th><th>فضای ذخیره</th><th>GPU</th><th>سرور و API، ماهانه (تقریبی)</th></tr></thead>
+      <tbody>
+        <tr><td>ردیاب ICP</td><td><span class="en">2 vCPU</span></td><td><span class="en">4 GB</span></td><td><span class="en">40 GB SSD</span></td><td>ندارد</td><td class="n">۱۵ تا ۲۵ دلار</td></tr>
+        <tr><td>موتور محتوا</td><td><span class="en">4–8 vCPU</span></td><td><span class="en">16 GB</span></td><td><span class="en">200 GB SSD</span></td><td>ندارد</td><td class="n">۶۰ تا ۱۰۰ دلار</td></tr>
+        <tr><td>موتور کامل تولید محتوا مبتنی بر هوش مصنوعی</td><td><span class="en">8 vCPU</span></td><td><span class="en">32 GB</span></td><td><span class="en">300 GB SSD</span></td><td>طبق روش انتخابی</td><td class="n">۱۰۰ تا ۱۹۰ دلار</td></tr>
+      </tbody>
+    </table></div>
+    <h3>دو روش برای موتور کامل تولید محتوا مبتنی بر هوش مصنوعی</h3>
+    <div class="cols2">
+      <div class="box glass"><h3>الف) تولید محتوا با API · پیشنهاد من</h3>
+        <ul class="plain"><li>سرور: <span class="en">8 vCPU · 32 GB RAM · 300 GB SSD</span>، بدون GPU، حدود ۸۰ تا ۱۵۰ دلار در ماه</li><li>API تولید محتوا (حدود ۳۰ محتوای ورودی و ۲۰ تصویر نهایی در ماه): حدود ۲۰ تا ۴۰ دلار در ماه</li></ul>
+        <span class="cost">جمع: حدود ۱۰۰ تا ۱۹۰ دلار در ماه</span></div>
+      <div class="box glass out"><h3>ب) GPU اختصاصی</h3>
+        <ul class="plain"><li>سرور: <span class="en">8 vCPU · 32–64 GB RAM · 500 GB SSD</span> و یک GPU با <span class="en">24 GB</span> حافظه (<span class="en">RTX 4090</span>)</li><li>خرید: حدود ۳٬۰۰۰ تا ۴٬۰۰۰ دلار یک‌باره (قیمت جهانی؛ در بازار ایران معمولاً بیشتر) به‌اضافه‌ی برق و نگهداری</li><li>یا اجاره‌ی GPU ابری: حدود ۴۰۰ تا ۸۰۰ دلار در ماه</li></ul>
+        <span class="cost">در این حجم به‌صرفه نیست</span></div>
+    </div>
+    <p class="small">همه‌ی ارقام تقریبی است و با نرخ روز و حجم واقعی مصرف تغییر می‌کند.</p>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">سازنده</span><h2>چرا من</h2></div>
+  <div class="body">
+    <p class="lead">من سیستم‌های AI و اتوماسیون برای کسب‌وکارهای صنعتی و B2B می‌سازم.</p>
+    <ul class="plain">
+      <li>بات‌های بله، تلگرام و دایرکت خودکار اینستاگرام که همین حالا در حال کار هستند</li>
+      <li>ابزارهای AI برای صنعت: برآورد هزینه و محاسبات سازه</li>
+      <li>پیج شخصی <span class="en">@growthbysobhan</span> با همین موتور تولید می‌شود</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">شروع</span><h2>تأیید و شروع</h2><p class="valid">این پیشنهاد تا یک هفته معتبر است · <span class="en">EH-1405-01</span></p></div>
+  <div class="body">
+    <div class="accept">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="summary glass" id="summary"></div>
+        <ul class="plain terms">
+          <li>قیمت بسته فقط هزینه‌ی یک‌باره‌ی ساخت سیستم است.</li>
+          <li>هزینه‌ی ماهانه‌ی سرور و API جداگانه و بر عهده‌ی شماست.</li>
+          <li>مالکیت همه‌ی محتوا و فایل‌ها با شماست.</li>
+        </ul>
+      </div>
+      <div class="formbox glass">
+        <form id="form" novalidate>
+          <label for="who">نام و سمت
+            <input type="text" id="who" autocomplete="name" placeholder="اسم مدیرعامل"></label>
+          <label for="phone">شماره تماس
+            <input type="tel" id="phone" autocomplete="tel" inputmode="tel" dir="ltr" placeholder="0912 123 4567"></label>
+          <p class="err" id="err" hidden>شماره را به شکل ۰۹۱۲۱۲۳۴۵۶۷ وارد کنید.</p>
+          <label class="chk" for="agree"><input type="checkbox" id="agree"> شرایط همکاری را خوانده‌ام و قبول دارم.</label>
+          <button class="btn" id="go" type="submit" disabled>تأیید پیشنهاد</button>
+        </form>
+        <div class="done" id="sent" hidden>
+          <b>✓ تأیید شما ارسال شد</b>
+          <span>به‌زودی برای هماهنگی تحویل اولین محتوا با شما تماس می‌گیرم.</span>
+        </div>
+        <div class="done" id="stamp" hidden>
+          <b>✓ تأیید شد</b>
+          <span>ارسال خودکار انجام نشد. این پیام را کپی کنید و در بله برای من بفرستید:</span>
+          <pre id="msg"></pre>
+          <button class="btn ghost" id="copy" type="button">کپی پیام</button>
+        </div>
+        <a class="btn ghost" id="pdf" href="https://www.aisanaat.ir/proposals/export-hub/proposal.pdf" target="_blank" rel="noopener">دریافت PDF پیشنهاد</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+</div>
+
+<div class="bar" id="bar"></div>
+<nav class="nav" aria-label="اسلایدها">
+  <button type="button" id="prev" aria-label="اسلاید قبلی">→</button>
+  <span class="count" id="count"></span>
+  <button type="button" id="next" aria-label="اسلاید بعدی">←</button>
+</nav>
+
+<script>
+// Prices in toman: one-time build cost per package.
+const PRICES = {base: 55000000, growth: 145000000, full: 235000000};
+const ROWS = ['دریافت خودکار کامنت و دایرکت', 'تشخیص ICP، مرحله و امتیاز با AI', 'هشدار فوری سرنخ در بله', 'فایل اکسل ICP', 'دایرکت خودکار با کلمه‌ی کلیدی', 'بهبود محتوای شما (زیرنویس، قلاب، تدوین، کپشن)', 'تبدیل هر محتوا به ریلز، کاروسل، استوری و لینکدین', 'انتشار خودکار با تأیید در بله', 'ساخت محتوای بصری توسط موتور', 'داشبورد زنده'];
+const TIERS = [
+  {id: 'base', name: 'ردیاب ICP', note: 'روی پیج فعلی شما: چه کسی مشتری است؟', v: ['✓', '✓', '✓', 'ماهانه', '✓', '', '', '', '', '']},
+  {id: 'growth', name: 'موتور محتوا', note: 'ردیاب ICP + موتوری که محتوای شما را بهبود می‌دهد و منتشر می‌کند', v: ['✓', '✓', '✓', 'هفتگی', '✓', 'تا ۲۰ در ماه', '✓', '✓', '', ''], rec: true},
+  {id: 'full', name: 'موتور کامل تولید محتوا مبتنی بر هوش مصنوعی', note: 'همه‌ی موارد + موتور خودش محتوای بصری می‌سازد', v: ['✓', '✓', '✓', 'هفتگی', '✓', 'تا ۳۰ در ماه', '✓', '✓', 'تا ۲۰ در ماه', '✓']},
+];
+const fa = n => n.toLocaleString('fa-IR');
+const price = p => p == null ? '[قیمت]' : fa(p / 1e6) + ' میلیون تومان';
+let pick = 'growth';
+try { pick = localStorage.getItem('eh-tier') || pick; } catch (e) {}
+
+const tiersEl = document.getElementById('tiers');
+tiersEl.innerHTML = TIERS.map(t => `
+  <button class="tier" type="button" data-id="${t.id}" aria-pressed="false">
+    <span class="name">${t.name}${t.rec ? '<span class="badge">پیشنهاد من</span>' : ''}</span>
+    <span class="note">${t.note}</span>
+    <span class="price">${price(PRICES[t.id])} <small>یک‌باره</small></span>
+    <ul>${ROWS.map((r, i) => `<li class="${t.v[i] ? '' : 'off'}"><span>${r}</span><b>${t.v[i] || '—'}</b></li>`).join('')}</ul>
+    <span class="pick">انتخاب این بسته</span>
+  </button>`).join('');
+
+const who = document.getElementById('who'), phone = document.getElementById('phone'), agree = document.getElementById('agree'), go = document.getElementById('go');
+// Same rule as the site's /api/brief: Iranian number → 11 digits (09121234567), or "".
+function normalizePhone(raw) {
+  let d = String(raw).replace(/[۰-۹]/g, c => '۰۱۲۳۴۵۶۷۸۹'.indexOf(c)).replace(/[٠-٩]/g, c => '٠١٢٣٤٥٦٧٨٩'.indexOf(c)).replace(/[\s\-()]/g, '');
+  if (d.startsWith('+98')) d = '0' + d.slice(3);
+  else if (d.startsWith('0098')) d = '0' + d.slice(4);
+  else if (/^98\d{10}$/.test(d)) d = '0' + d.slice(2);
+  else if (/^9\d{9}$/.test(d)) d = '0' + d;
+  return /^0[1-9]\d{9}$/.test(d) ? d : '';
+}
+function render() {
+  const t = TIERS.find(x => x.id === pick) || TIERS[1];
+  tiersEl.querySelectorAll('.tier').forEach(b => {
+    const on = b.dataset.id === t.id;
+    b.setAttribute('aria-pressed', on);
+    b.querySelector('.pick').textContent = on ? '✓ انتخاب شده' : 'انتخاب این بسته';
+  });
+  document.getElementById('summary').innerHTML = `
+    <div><span>بسته</span><b>${t.name}</b></div>
+    <div><span>هزینه‌ی ساخت (یک‌باره)</span><b>${price(PRICES[t.id])}</b></div>
+    <div><span>سرور و API</span><b>ماهانه، جداگانه</b></div>
+    <div><span>مدت</span><b>۳ ماه</b></div>`;
+  go.disabled = !(agree.checked && who.value.trim() && normalizePhone(phone.value));
+}
+tiersEl.addEventListener('click', e => {
+  const b = e.target.closest('.tier'); if (!b) return;
+  pick = b.dataset.id;
+  try { localStorage.setItem('eh-tier', pick); } catch (err) {}
+  render();
+});
+who.addEventListener('input', render); phone.addEventListener('input', render); agree.addEventListener('change', render);
+phone.addEventListener('blur', () => { document.getElementById('err').hidden = !phone.value.trim() || !!normalizePhone(phone.value); });
+// Sends the approval to the owner's Bale bot through the site's enquiry endpoint; only works on aisanaat.ir.
+document.getElementById('form').addEventListener('submit', async e => {
+  e.preventDefault(); if (go.disabled) return;
+  const t = TIERS.find(x => x.id === pick), tel = normalizePhone(phone.value);
+  go.disabled = true; go.textContent = 'در حال ارسال…';
+  let ok = false;
+  try {
+    const r = await fetch('/api/brief', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
+      kind: 'enquiry', product: 'تأیید پروپوزال هاب صادرات EH-1405-01',
+      need: `بسته: ${t.name} · ${price(PRICES[t.id])}`, name: who.value.trim(), reach: tel, page: '/proposals/export-hub'})});
+    ok = r.ok;
+  } catch (err) {}
+  document.getElementById('form').hidden = true;
+  if (ok) { document.getElementById('sent').hidden = false; return; }
+  document.getElementById('msg').textContent = `سلام، پیشنهاد EH-1405-01 را تأیید می‌کنم.\nبسته: ${t.name}\nنام و سمت: ${who.value.trim()}\nشماره تماس: ${tel}`;
+  document.getElementById('stamp').hidden = false;
+});
+document.getElementById('copy').addEventListener('click', async e => {
+  const pre = document.getElementById('msg');
+  try { await navigator.clipboard.writeText(pre.textContent); e.target.textContent = 'کپی شد'; }
+  catch (err) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); e.target.textContent = 'متن انتخاب شد؛ کپی کنید'; }
+});
+render();
+
+// slideshow: RTL, so ← is forward
+const slides = [...document.querySelectorAll('.slide')], prev = document.getElementById('prev'), next = document.getElementById('next');
+let cur = 0;
+function show(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  slides.forEach((s, k) => { s.classList.toggle('on', k === cur); s.inert = k !== cur; });
+  slides[cur].scrollTop = 0;
+  document.getElementById('count').textContent = `${fa(cur + 1)} / ${fa(slides.length)}`;
+  document.getElementById('bar').style.width = `${(cur + 1) / slides.length * 100}%`;
+  prev.disabled = cur === 0; next.disabled = cur === slides.length - 1;
+}
+prev.onclick = () => show(cur - 1);
+next.onclick = () => show(cur + 1);
+document.addEventListener('keydown', e => {
+  if (e.target.closest('input, textarea')) return;
+  if (['ArrowLeft', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(cur + 1); }
+  if (['ArrowRight', 'PageUp'].includes(e.key)) { e.preventDefault(); show(cur - 1); }
+});
+let x0 = null;
+document.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, {passive: true});
+document.addEventListener('touchend', e => {
+  if (x0 == null) return;
+  const dx = e.changedTouches[0].clientX - x0; x0 = null;
+  if (Math.abs(dx) > 60) show(cur + (dx > 0 ? 1 : -1));
+});
+show(0);
+</script>
+</body></html>
