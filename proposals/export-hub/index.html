@@ -396,9 +396,9 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(-
 
 <div class="bar" id="bar"></div>
 <nav class="nav" aria-label="اسلایدها">
-  <button type="button" id="prev" aria-label="اسلاید قبلی">→</button>
+  <button type="button" id="next" aria-label="اسلاید بعدی">→</button>
   <span class="count" id="count"></span>
-  <button type="button" id="next" aria-label="اسلاید بعدی">←</button>
+  <button type="button" id="prev" aria-label="اسلاید قبلی">←</button>
 </nav>
 
 <script>
@@ -481,7 +481,7 @@ document.getElementById('copy').addEventListener('click', async e => {
 });
 render();
 
-// slideshow: RTL, so ← is forward
+// slideshow: the next button sits on the right (user's choice), so → / swipe left moves forward
 const slides = [...document.querySelectorAll('.slide')], prev = document.getElementById('prev'), next = document.getElementById('next');
 let cur = 0;
 function show(i) {
@@ -496,15 +496,15 @@ prev.onclick = () => show(cur - 1);
 next.onclick = () => show(cur + 1);
 document.addEventListener('keydown', e => {
   if (e.target.closest('input, textarea')) return;
-  if (['ArrowLeft', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(cur + 1); }
-  if (['ArrowRight', 'PageUp'].includes(e.key)) { e.preventDefault(); show(cur - 1); }
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(cur + 1); }
+  if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(cur - 1); }
 });
 let x0 = null;
 document.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, {passive: true});
 document.addEventListener('touchend', e => {
   if (x0 == null) return;
   const dx = e.changedTouches[0].clientX - x0; x0 = null;
-  if (Math.abs(dx) > 60) show(cur + (dx > 0 ? 1 : -1));
+  if (Math.abs(dx) > 60) show(cur + (dx < 0 ? 1 : -1));
 });
 show(0);
 </script>
