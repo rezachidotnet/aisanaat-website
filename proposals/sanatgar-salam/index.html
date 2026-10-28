@@ -345,7 +345,6 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(-
           <label for="phone">شماره تماس
             <input type="tel" id="phone" autocomplete="tel" inputmode="tel" dir="ltr" placeholder="0912 123 4567"></label>
           <p class="err" id="err" hidden>شماره را به شکل ۰۹۱۲۱۲۳۴۵۶۷ وارد کنید.</p>
-          <label class="chk" for="agree"><input type="checkbox" id="agree"> شرایط همکاری را خوانده‌ام و قبول دارم.</label>
           <button class="btn" id="go" type="submit" disabled>تأیید پیشنهاد</button>
         </form>
         <div class="done" id="sent" hidden>
@@ -396,7 +395,7 @@ tiersEl.innerHTML = TIERS.map(t => `
     <span class="pick">انتخاب این گزینه</span>
   </button>`).join('');
 
-const who = document.getElementById('who'), phone = document.getElementById('phone'), agree = document.getElementById('agree'), go = document.getElementById('go');
+const who = document.getElementById('who'), phone = document.getElementById('phone'), go = document.getElementById('go');
 // Same rule as the site's /api/brief: Iranian number → 11 digits (09121234567), or "".
 function normalizePhone(raw) {
   let d = String(raw).replace(/[۰-۹]/g, c => '۰۱۲۳۴۵۶۷۸۹'.indexOf(c)).replace(/[٠-٩]/g, c => '٠١٢٣٤٥٦٧٨٩'.indexOf(c)).replace(/[\s\-()]/g, '');
@@ -418,7 +417,7 @@ function render() {
     <div><span>هزینه (یک‌باره)</span><b>${usd(PRICES[t.id].now)}</b></div>
     <div><span>سرور</span><b>جداگانه</b></div>
     <div><span>پشتیبانی</span><b>یک ماه</b></div>`;
-  go.disabled = !(agree.checked && who.value.trim() && normalizePhone(phone.value));
+  go.disabled = !(who.value.trim() && normalizePhone(phone.value));
 }
 tiersEl.addEventListener('click', e => {
   const b = e.target.closest('.tier'); if (!b) return;
@@ -426,7 +425,7 @@ tiersEl.addEventListener('click', e => {
   try { localStorage.setItem('ss-tier', pick); } catch (err) {}
   render();
 });
-who.addEventListener('input', render); phone.addEventListener('input', render); agree.addEventListener('change', render);
+who.addEventListener('input', render); phone.addEventListener('input', render);
 phone.addEventListener('blur', () => { document.getElementById('err').hidden = !phone.value.trim() || !!normalizePhone(phone.value); });
 // Sends the approval to the owner's Bale bot through the site's enquiry endpoint; only works on aisanaat.ir.
 document.getElementById('form').addEventListener('submit', async e => {
