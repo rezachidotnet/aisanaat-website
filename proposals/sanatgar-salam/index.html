@@ -1,0 +1,482 @@
+<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><title>پیشنهاد ربات صنعت‌گر سلام</title><link rel="stylesheet" href="fonts.css"><style>body{margin:0}[hidden]{display:none!important}</style></head><body><style>
+/* Same deck as the export-hub proposal: dark glass slides, label rail + content column. Navy + amber = the page's own story colours. */
+:root{
+  --sea:#050a17; --ink:#eef3ff; --muted:#9db0cf; --dim:#6a7c9c;
+  --blue:#3d8bff; --cyan:#3fd8ff; --amber:#ffb21a; --amber-ink:#1d1300; --ok:#38e09a; --navy:#0B1F3A;
+  --glass:rgba(255,255,255,.055); --glass-hi:rgba(255,255,255,.09); --edge:rgba(255,255,255,.13); --edge-hi:rgba(255,255,255,.28);
+  --display:'Alexandria','Vazirmatn',Tahoma,sans-serif;
+  --body:'Vazirmatn',Tahoma,sans-serif;
+  --r:22px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--sea);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85;overflow:hidden;
+  background-image:
+    radial-gradient(60vw 50vw at 95% -5%, rgba(61,139,255,.38), transparent 60%),
+    radial-gradient(45vw 40vw at 0% 30%, rgba(255,178,26,.20), transparent 60%),
+    radial-gradient(55vw 45vw at 100% 75%, rgba(63,216,255,.16), transparent 60%),
+    radial-gradient(50vw 40vw at 10% 105%, rgba(61,139,255,.24), transparent 60%)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h2{font-size:clamp(24px,3.2vw,34px);font-weight:800;line-height:1.45}
+h3{font-size:18px;font-weight:700;line-height:1.5}
+p{margin:0;max-width:62ch}
+.en{unicode-bidi:isolate;direction:ltr;display:inline-block}
+.muted{color:var(--muted)}
+
+/* deck */
+.deck{direction:rtl;text-align:right;position:relative;height:100%;width:100%}
+.slide{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;-webkit-overflow-scrolling:touch;overflow-y:auto;display:flex;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:28px;padding-bottom:104px;visibility:hidden;opacity:0}
+.slide.on{visibility:visible;opacity:1}
+.slide > .wrap{margin:auto;width:100%;max-width:1180px}
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:5;direction:rtl;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:99px;
+  background:rgba(10,18,36,.7);border:1px solid var(--edge);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.nav button{all:unset;cursor:pointer;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:18px;color:var(--ink);border:1px solid var(--edge)}
+.nav button:hover{border-color:var(--edge-hi)}
+.nav button:disabled{opacity:.3;cursor:default}
+.nav button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.count{font-variant-numeric:tabular-nums;font-size:14px;color:var(--muted);min-width:64px;text-align:center}
+.bar{position:fixed;top:env(safe-area-inset-top,0px);right:0;height:3px;background:var(--amber);box-shadow:0 0 12px var(--amber);z-index:5}
+
+.glass{background:linear-gradient(160deg,var(--glass-hi),var(--glass));border:1px solid var(--edge);border-radius:var(--r);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 20px 50px -20px rgba(0,0,0,.6);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%)}
+
+/* hero */
+.hero{padding:clamp(26px,5vw,64px);display:flex;flex-direction:column;gap:28px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-40%;right:-10%;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(61,139,255,.45),transparent);pointer-events:none}
+.brandrow{display:flex;justify-content:space-between;align-items:center;gap:16px;position:relative}
+.brandrow img{width:64px;height:64px;border-radius:16px;background:#fff;padding:6px}
+.mark{font-family:var(--display);font-weight:800;font-size:20px;direction:ltr;unicode-bidi:isolate}
+.mark i{font-style:normal;color:var(--amber)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;position:relative}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:99px;border:1px solid var(--edge);background:rgba(255,255,255,.05);color:var(--muted);white-space:nowrap}
+.chip.amber{color:var(--amber);border-color:rgba(255,178,26,.45);background:rgba(255,178,26,.08)}
+.hero h1{font-size:clamp(34px,6.4vw,68px);font-weight:800;line-height:1.3;position:relative;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--amber);text-shadow:0 0 40px rgba(255,178,26,.45)}
+.hero p{font-size:18px;color:var(--muted);position:relative}
+.lane{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;position:relative}
+.lane div{padding:16px 18px;border-radius:16px;border:1px solid var(--edge);background:rgba(5,10,23,.35);display:flex;flex-direction:column;gap:2px}
+.lane div:last-child{border-color:rgba(255,178,26,.5);box-shadow:0 0 30px -10px rgba(255,178,26,.6)}
+.lane small{font-size:12px;color:var(--dim);letter-spacing:.04em}
+.lane b{font-family:var(--display);font-weight:700;font-size:16px}
+.byline{font-size:14px;color:var(--muted);position:relative}
+.byline b{color:var(--ink)}
+
+/* section: label rail + content */
+.sec{display:grid;grid-template-columns:260px minmax(0,1fr);gap:36px;align-items:start}
+.sec.wide{grid-template-columns:1fr;gap:20px}
+.rail{display:flex;flex-direction:column;gap:10px;padding-top:6px}
+.rail .k{font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:.04em}
+.body{display:flex;flex-direction:column;gap:20px;min-width:0}
+.lead{font-size:19px;line-height:1.8}
+ul.plain{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+ul.plain li{position:relative;padding-right:20px}
+ul.plain li::before{content:"";position:absolute;right:0;top:.75em;width:8px;height:8px;border-radius:2px;background:var(--blue);box-shadow:0 0 10px var(--blue)}
+
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card p{font-size:14.5px;color:var(--muted)}
+.card.key{border-color:rgba(255,178,26,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 40px -12px rgba(255,178,26,.7)}
+
+.cols2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.box{padding:20px;display:flex;flex-direction:column;gap:10px}
+.box.out ul.plain li::before{background:var(--dim);box-shadow:none}
+.box.out li{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(255,138,122,.7)}
+
+/* pipeline */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:f}
+.flow li{padding:18px;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted);counter-increment:f}
+.flow li::before{content:counter(f,persian);font-family:var(--display);font-weight:800;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--blue);color:#fff;box-shadow:0 0 18px -2px var(--blue)}
+.flow b{font-family:var(--display);font-size:16px;color:var(--ink)}
+.flow .who{align-self:flex-start;font-size:12px;font-weight:700;padding:1px 10px;border-radius:99px;color:var(--cyan);border:1px solid rgba(63,216,255,.35)}
+.flow li.you{border-style:dashed}
+.flow li.you::before{background:transparent;border:1px solid var(--edge-hi);box-shadow:none}
+.flow li.you .who{color:var(--ink);border-color:var(--edge-hi)}
+.flow li.out{border-color:rgba(255,178,26,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 40px -12px rgba(255,178,26,.7)}
+.flow li.out::before{background:var(--amber);color:var(--amber-ink);box-shadow:0 0 18px -2px var(--amber)}
+
+/* story mock */
+.show{display:grid;grid-template-columns:auto minmax(0,1fr);gap:32px;align-items:center}
+.phone{width:220px;aspect-ratio:9/17;border-radius:34px;background:#0a0d14;padding:10px;border:1px solid var(--edge-hi);box-shadow:0 30px 60px -20px rgba(0,0,0,.8),0 0 60px -20px rgba(255,178,26,.5)}
+.screen{width:100%;height:100%;border-radius:26px;overflow:hidden;position:relative;color:#F5F0E6;background:linear-gradient(180deg,var(--navy) 0%,#24395A 45%,#3A5378 62%,var(--navy) 100%)}
+.screen .hd{display:flex;justify-content:space-between;align-items:center;padding:18px 14px 0;font-size:11px;font-weight:700}
+.screen .hd span:first-child{display:flex;align-items:center;gap:6px}
+.screen .hd img{width:22px;border-radius:6px;background:#fff;padding:2px}
+.screen .num{background:var(--amber);color:var(--navy);border-radius:99px;padding:0 8px}
+.screen .photo{margin:16px 14px 0;height:44%;border-radius:12px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 12px,rgba(255,255,255,.12) 12px 24px);display:grid;place-items:center;font-size:11px;color:rgba(245,240,230,.6)}
+.screen .tx{position:absolute;bottom:42px;right:14px;left:14px;display:flex;flex-direction:column;gap:4px}
+.screen .tx small{color:var(--amber);font-size:10px;font-weight:700}
+.screen .tx b{font-family:var(--display);font-size:15px;line-height:1.4}
+.screen .tx i{display:block;width:34px;height:3px;background:var(--amber)}
+.screen .tx p{font-size:10px;line-height:1.6;color:#D6D9E0}
+.screen .cta{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.3);font-size:9.5px;text-align:center;padding:7px 6px;line-height:1.5}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.phase{padding:18px;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+.phase b{font-family:var(--display);font-size:16px;color:var(--ink)}
+.phase small{color:var(--cyan);font-weight:700}
+.phase.now{border-color:rgba(255,178,26,.6)}
+.phase.now small{color:var(--amber)}
+.gate{font-size:13px;color:var(--ink);margin-top:auto;padding-top:8px;border-top:1px solid var(--edge)}
+
+/* pricing */
+.tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.tier{all:unset;box-sizing:border-box;cursor:pointer;padding:18px 22px;display:flex;flex-direction:column;gap:10px;color:var(--ink);font-family:var(--body);text-align:right;min-width:0;
+  background:linear-gradient(160deg,var(--glass-hi),var(--glass));border:1px solid var(--edge);border-radius:var(--r);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 rgba(255,255,255,.16)}
+.tier:hover{border-color:var(--edge-hi)}
+.tier:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.tier[aria-pressed="true"]{border-color:var(--amber);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 50px -14px rgba(255,178,26,.8)}
+.tier .name{font-family:var(--display);font-weight:800;font-size:20px;line-height:1.5;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.badge{white-space:nowrap;font-family:var(--body);font-size:12px;background:var(--amber);color:var(--amber-ink);padding:3px 12px;border-radius:99px;font-weight:700}
+.tier .note{font-size:14px;color:var(--muted)}
+.price{font-family:var(--display);font-size:30px;font-weight:800;color:var(--amber);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price s{font-size:16px;color:var(--dim);font-weight:500;text-decoration-color:rgba(255,138,122,.8)}
+.price small{font-size:13px;color:var(--dim);font-weight:500}
+.tier ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:3px;font-size:13.5px;line-height:1.6}
+.tier li{display:flex;justify-content:space-between;gap:10px;padding-bottom:3px;border-bottom:1px solid var(--edge)}
+.tier li.off{color:var(--dim)}
+.tier li b{white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums}
+.pick{text-align:center;font-size:14px;font-weight:700;padding:9px;border-radius:12px;border:1px solid var(--edge);color:var(--muted)}
+.tier[aria-pressed="true"] .pick{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+.small{font-size:14px;color:var(--muted)}
+
+/* about */
+.person{padding:22px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.avatar{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;background:var(--amber);color:var(--amber-ink)}
+
+/* accept */
+.accept{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
+.summary{padding:22px;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.summary div{display:flex;justify-content:space-between;gap:12px;padding-bottom:8px;border-bottom:1px solid var(--edge)}
+.summary div:last-child{border:0;padding:0}
+.summary b{font-family:var(--display);text-align:left}
+.terms{padding:4px 4px 0;font-size:14px;color:var(--muted)}
+.formbox{padding:22px;display:flex;flex-direction:column;gap:16px}
+form{display:flex;flex-direction:column;gap:14px}
+label{font-size:14px;display:flex;flex-direction:column;gap:6px;color:var(--muted)}
+label.chk{flex-direction:row;align-items:flex-start;gap:10px;color:var(--ink)}
+input[type=text],input[type=tel]{font:inherit;padding:12px 14px;border:1px solid var(--edge);border-radius:12px;background:rgba(5,10,23,.5);color:var(--ink)}
+input[type=checkbox]{accent-color:var(--amber);width:18px;height:18px;margin-top:5px}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.btn{font:inherit;font-family:var(--display);font-weight:700;font-size:16px;padding:13px 18px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--amber),#ffcd5e);color:var(--amber-ink);cursor:pointer;box-shadow:0 10px 30px -10px rgba(255,178,26,.8);text-align:center;text-decoration:none}
+.btn:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--edge-hi);font-size:14px;padding:11px 14px;box-shadow:none}
+.done{display:flex;flex-direction:column;gap:12px}
+.done b{font-family:var(--display);font-size:20px;color:var(--ok)}
+.done pre{white-space:pre-wrap;font:inherit;font-size:14px;background:rgba(5,10,23,.55);border:1px solid var(--edge);padding:12px;border-radius:12px;margin:0}
+.err{font-size:13px;color:#ff8a7a}
+.valid{font-size:13px;color:var(--dim)}
+
+@media (max-width:900px){
+  .sec{grid-template-columns:1fr;gap:16px}
+  .rail{padding-top:0}
+  .grid3,.tiers,.cols2,.accept{grid-template-columns:1fr}
+  .flow,.road{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .show{grid-template-columns:1fr;justify-items:center}
+}
+@media (max-width:520px){
+  .lane,.flow,.road{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){
+  .slide{transition:opacity .35s ease,visibility .35s}
+  .slide.on > .wrap{animation:rise .45s ease both}
+  @keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+  .tier,.pick{transition:border-color .2s,box-shadow .2s,background .2s}
+  .bar{transition:width .35s ease}
+}
+/* print = PDF: every slide on its own page */
+@media print{
+  html,body{height:auto;overflow:visible}
+  .deck{height:auto}
+  .slide{position:relative;top:auto;right:auto;bottom:auto;left:auto;visibility:visible;opacity:1;min-height:100vh;overflow:visible;padding-top:40px;padding-bottom:40px;break-after:page}
+  .slide > .wrap{animation:none}
+  .nav,.bar,.formbox,.pick{display:none!important}
+  .accept{grid-template-columns:1fr}
+}
+</style>
+
+<div class="deck" lang="fa" dir="rtl" id="deck">
+
+<section class="slide"><div class="wrap">
+<header class="hero glass">
+  <div class="brandrow"><span class="mark"><i>ai</i>sanaat</span><img src="salam-logo.png" alt="لوگوی صنعت‌گر سلام"></div>
+  <div class="meta"><span class="chip amber">پیشنهاد به‌روزشده</span><span class="chip">نسخه‌ی تصویر و متن</span><span class="chip">۶ آبان ۱۴۰۵</span><span class="chip"><span class="en">SS-1405-02</span></span></div>
+  <h1>ربات هوشمند <em>صنعت‌گر سلام</em></h1>
+  <p>ربات بله، ساخت خودکار استوری تصویری اینستاگرام و داشبورد مشتریان؛ برای اینکه هر تولیدکننده‌ای که معرفی می‌شود، مشتری واقعی بگیرد.</p>
+  <div class="lane">
+    <div><small>ورودی</small><b>عکس و اطلاعات تولیدکننده</b></div>
+    <div><small>سیستم</small><b>استوری تصویری · تأیید · ثبت مشتری</b></div>
+    <div><small>خروجی</small><b>مشتری برای تولیدکننده</b></div>
+  </div>
+  <p class="byline">تقدیم به <b>مدیریت صفحه صنعت‌گر سلام</b> · ارائه‌دهنده: <b>امیرسبحان طالقانی، aisanaat</b></p>
+</header>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">تغییر</span><h2>چه چیزی عوض شد</h2><p class="muted">طبق درخواست شما، استوری‌ها فقط تصویر و متن هستند.</p></div>
+  <div class="body">
+    <p class="lead">بخش ویدیو از کار حذف شد؛ پس کار سبک‌تر است و قیمت هر دو گزینه پایین آمد.</p>
+    <div class="cols2">
+      <div class="box glass out"><h3>حذف شد</h3><ul class="plain"><li>تدوین ویدیو و استوری متحرک</li><li>موسیقی و تعویض موسیقی</li><li>صداگذاری و گویندگی</li><li>دریافت و پردازش فایل ویدیو</li></ul></div>
+      <div class="box glass"><h3>می‌ماند</h3><ul class="plain"><li>استوری تصویری ۹:۱۶ با لوگو، رنگ‌ها، فونت فارسی و شماره اختصاصی</li><li>ربات بله، تأیید اپراتور، ثبت مشتری و داشبورد</li><li>در نسخه‌ی ایده‌آل: متن و بهبود عکس با هوش مصنوعی</li></ul></div>
+    </div>
+    <div class="cols2">
+      <div class="box glass"><h3>معمولی</h3><p class="price"><span class="en">$175</span> <s class="en">$235</s></p></div>
+      <div class="box glass"><h3>ایده‌آل</h3><p class="price"><span class="en">$350</span> <s class="en">$440</s></p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">ایده</span><h2>معرفی‌ای که مشتری می‌آورد</h2></div>
+  <div class="body">
+    <p class="lead">صفحه «صنعت‌گر سلام» تولیدکنندگان ایرانی را معرفی می‌کند. «ربات صنعت‌گر سلام» هر معرفی را به یک کانال جذب مشتری تبدیل می‌کند؛ با نتیجه‌ای که هم صفحه می‌بیند و هم تولیدکننده.</p>
+    <div class="grid3">
+      <div class="card glass"><h3>ثبت‌نام بی‌واسطه</h3><p>تولیدکننده خودش اطلاعات و عکس‌ها را در ربات بله می‌فرستد.</p></div>
+      <div class="card glass"><h3>استوری آماده انتشار</h3><p>تصویر و متن با برند صفحه و شماره اختصاصی، بدون نیاز به طراح.</p></div>
+      <div class="card glass key"><h3>هر تماس، یک مشتری</h3><p>نام و شماره بیننده برای تولیدکننده ارسال و در داشبورد صفحه ثبت می‌شود.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">سیستم</span><h2>از ثبت‌نام تا مشتری</h2><p class="muted">اپراتور فقط تأیید می‌کند و منتشر می‌کند. بقیه‌ی مسیر خودکار است.</p></div>
+  <div class="body">
+    <ol class="flow">
+      <li class="glass you"><span class="who">تولیدکننده</span><b>ثبت‌نام در بله</b>نام، حوزه صنعت، شهر، محصول، شماره تماس و تا ۵ عکس.</li>
+      <li class="glass"><span class="who">ربات</span><b>ساخت استوری</b>تصویر عمودی با برند صفحه، متن معرفی و شماره اختصاصی.</li>
+      <li class="glass"><span class="who">اپراتور</span><b>تأیید و انتشار</b>تأیید یا رد با یک دکمه در بله؛ تولیدکننده از نتیجه باخبر می‌شود.</li>
+      <li class="glass out"><span class="who">بیننده</span><b>تماس</b>شماره استوری را به ربات می‌فرستد، نام و تلفنش را ثبت می‌کند و اطلاعات تولیدکننده را می‌گیرد.</li>
+    </ol>
+    <div class="cols2">
+      <div class="box glass"><h3>برای تولیدکننده</h3><p class="muted">تماس مستقیم مشتریان علاقه‌مند، نه فقط لایک و بازدید.</p></div>
+      <div class="box glass"><h3>برای صفحه</h3><p class="muted">بانک تولیدکنندگان به تفکیک صنعت و شهر، با آمار دقیق مشتری‌های هر کدام.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">استوری</span><h2>طرح پیشنهادی استوری</h2><p class="muted">یک تصویر ثابت؛ بدون ویدیو و موسیقی.</p></div>
+  <div class="body">
+    <div class="show">
+      <div class="phone" aria-hidden="true"><div class="screen">
+        <div class="hd"><span><img src="salam-logo.png" alt="">صنعت‌گر سلام</span><span class="num">#۱۲۷</span></div>
+        <div class="photo">عکس تولیدکننده</div>
+        <div class="tx"><small>معرفی تولیدکننده</small><b>کارخانه صنایع فلزی نمونه</b><i></i><p>تولید سازه‌های فلزی و قطعات صنعتی · اصفهان</p></div>
+        <div class="cta">برای دریافت شماره تماس، عدد ۱۲۷ را در بله بفرستید</div>
+      </div></div>
+      <div class="body">
+        <p class="lead">هر استوری یک شماره اختصاصی دارد (مثلاً #۱۲۷). همین شماره، بیننده را به ربات و ربات را به تولیدکننده وصل می‌کند؛ پس معلوم است هر مشتری از کدام استوری آمده.</p>
+        <ul class="plain"><li>اندازه‌ی ۹:۱۶ آماده‌ی استوری اینستاگرام</li><li>لوگو، رنگ‌ها و فونت فارسی صفحه</li><li>اگر تولیدکننده چند عکس بفرستد، چند اسلاید استوری ساخته می‌شود</li></ul>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">تحویل</span><h2>شش بخش، یک سامانه</h2><p class="muted">همه فارسی، با هویت بصری صفحه؛ اداره‌ی روزانه با یک نفر و چند دقیقه در روز.</p></div>
+  <div class="body">
+    <div class="grid3">
+      <div class="card glass"><h3>ربات بله</h3><p>ثبت مرحله‌به‌مرحله‌ی تولیدکننده و دریافت عکس‌ها، و مسیر جداگانه برای بیننده‌ها؛ با کنترل شماره تماس و حجم فایل.</p></div>
+      <div class="card glass"><h3>سازنده خودکار استوری</h3><p>تبدیل عکس و اطلاعات خام به استوری تصویری ۹:۱۶ با لوگو، رنگ‌ها، فونت فارسی و شماره استوری.</p></div>
+      <div class="card glass"><h3>پنل تأیید اپراتور</h3><p>هر استوری آماده با دکمه‌های تأیید و رد در بله برای اپراتور ارسال می‌شود. هیچ محتوایی بدون تأیید منتشر نمی‌شود.</p></div>
+      <div class="card glass"><h3>جذب و ثبت مشتری</h3><p>بیننده پیش از دیدن اطلاعات تماس، نام و شماره‌اش را ثبت می‌کند و همان لحظه برای تولیدکننده ارسال می‌شود.</p></div>
+      <div class="card glass"><h3>داشبورد مدیریت</h3><p>پنل وب خصوصی با رمز: آمار کل، تفکیک صنعت و شهر، وضعیت هر تولیدکننده، تعداد مشتری‌ها، پیش‌نمایش استوری و خروجی اکسل.</p></div>
+      <div class="card glass"><h3>هویت بصری</h3><p>لوگو، تصویر پروفایل ربات و قالب استوری تصویری.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">زمان‌بندی</span><h2>پله‌پله تا راه‌اندازی</h2><p class="muted">زمان‌بندی دقیق بعد از جلسه شناخت اعلام می‌شود.</p></div>
+  <div class="body">
+    <div class="road">
+      <div class="phase glass"><small>قدم ۱</small><b>شناخت و قالب</b>بررسی حوزه‌های صنعتی، لحن و هویت بصری؛ نهایی‌کردن قالب استوری<span class="gate">تأیید قالب</span></div>
+      <div class="phase glass now"><small>قدم ۲</small><b>ساخت</b>ربات بله، سازنده‌ی استوری تصویری و مسیر تأیید اپراتور<span class="gate">نسخه‌ی آزمایشی</span></div>
+      <div class="phase glass"><small>قدم ۳</small><b>داشبورد و آزمایش</b>داشبورد مدیریت و آزمایش با چند تولیدکننده‌ی واقعی<span class="gate">تأیید نهایی</span></div>
+      <div class="phase glass"><small>قدم ۴</small><b>راه‌اندازی</b>نصب روی سرور، آموزش اپراتور و یک ماه پشتیبانی<span class="gate">لینک ربات در صفحه</span></div>
+    </div>
+    <div class="cols2">
+      <div class="box glass"><h3>آنچه از سمت صفحه لازم است</h3><ul class="plain"><li>حساب ربات بله به نام صفحه</li><li>یک اپراتور برای تأیید و انتشار استوری‌ها</li><li>سرور کوچک برای کار شبانه‌روزی ربات</li><li>تأیید نهایی ظاهر استوری و لوگو</li></ul></div>
+      <div class="box glass"><h3>فازهای بعدی (اختیاری)</h3><ul class="plain"><li>انتشار خودکار استوری در اینستاگرام</li><li>جایگاه ویژه‌ی پولی برای تولیدکنندگان</li></ul></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec wide">
+  <div class="rail"><span class="k">سرمایه‌گذاری</span><h2>دو گزینه برای شروع</h2><p class="muted">نسخه معمولی کار روزانه صفحه را خودکار می‌کند. نسخه ایده‌آل با هوش مصنوعی، محتوا را آماده‌تر و ارتباط خریدار و تولیدکننده را کامل‌تر می‌کند.</p></div>
+  <div class="body">
+    <div class="tiers" id="tiers"></div>
+    <p class="small">پرداخت در سه مرحله: ۵۰٪ شروع کار، ۳۰٪ هنگام تحویل، ۲۰٪ یک ماه پس از راه‌اندازی. قیمت‌ها به دلار است و با نرخ روز به تومان قابل پرداخت است. هزینه سرور جداگانه است.</p>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">سازنده</span><h2>درباره aisanaat</h2></div>
+  <div class="body">
+    <p class="lead">فرایندهای کسب‌وکار شما را با هوش مصنوعی خودکار می‌کنیم.</p>
+    <p class="muted">کارهای تکراری هر روز، مثل جمع‌آوری اطلاعات، تهیه محتوا، پاسخ به درخواست‌ها و پیگیری مشتری، به فرایندی خودکار تبدیل می‌شود که هر بار به یک شکل و بدون خطا اجرا می‌شود. نقطه شروع، مسئله واقعی کسب‌وکار است، نه ابزار.</p>
+    <div class="cols2">
+      <div class="person glass"><span class="avatar">ا.ط</span><h3>امیرسبحان طالقانی</h3><span class="muted">aisanaat</span><p class="small">از تحلیل تا اتوماسیون فرایندهای کسب‌وکار، در کنار شما هستیم.</p></div>
+      <div class="box glass"><h3>نمونه محصولات</h3><ul class="plain"><li>مناقصه‌بان</li><li>استیتر</li><li>دستیار برآورد هزینه سازه</li></ul></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="wrap sec">
+  <div class="rail"><span class="k">شروع</span><h2>تأیید و شروع</h2><p class="valid">این پیشنهاد تا ۱۴ روز معتبر است · <span class="en">SS-1405-02</span></p></div>
+  <div class="body">
+    <div class="accept">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="summary glass" id="summary"></div>
+        <ul class="plain terms">
+          <li>پرداخت: ۵۰٪ شروع، ۳۰٪ تحویل، ۲۰٪ یک ماه پس از راه‌اندازی.</li>
+          <li>هزینه‌ی سرور جداگانه و بر عهده‌ی صفحه است.</li>
+          <li>مالکیت سامانه و داده‌ها پس از پرداخت نهایی با صفحه است.</li>
+        </ul>
+      </div>
+      <div class="formbox glass">
+        <form id="form" novalidate>
+          <label for="who">نام و سمت
+            <input type="text" id="who" autocomplete="name" placeholder="نام و سمت"></label>
+          <label for="phone">شماره تماس
+            <input type="tel" id="phone" autocomplete="tel" inputmode="tel" dir="ltr" placeholder="0912 123 4567"></label>
+          <p class="err" id="err" hidden>شماره را به شکل ۰۹۱۲۱۲۳۴۵۶۷ وارد کنید.</p>
+          <label class="chk" for="agree"><input type="checkbox" id="agree"> شرایط همکاری را خوانده‌ام و قبول دارم.</label>
+          <button class="btn" id="go" type="submit" disabled>تأیید پیشنهاد</button>
+        </form>
+        <div class="done" id="sent" hidden>
+          <b>✓ تأیید شما ارسال شد</b>
+          <span>به‌زودی برای هماهنگی جلسه شناخت با شما تماس می‌گیرم.</span>
+        </div>
+        <div class="done" id="stamp" hidden>
+          <b>✓ تأیید شد</b>
+          <span>ارسال خودکار انجام نشد. این پیام را کپی کنید و در بله برای من بفرستید:</span>
+          <pre id="msg"></pre>
+          <button class="btn ghost" id="copy" type="button">کپی پیام</button>
+        </div>
+        <a class="btn ghost" id="pdf" href="https://www.aisanaat.ir/proposals/sanatgar-salam/proposal.pdf" target="_blank" rel="noopener">دریافت PDF پیشنهاد</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+</div>
+
+<div class="bar" id="bar"></div>
+<nav class="nav" aria-label="اسلایدها">
+  <button type="button" id="next" aria-label="اسلاید بعدی">→</button>
+  <span class="count" id="count"></span>
+  <button type="button" id="prev" aria-label="اسلاید قبلی">←</button>
+</nav>
+
+<script>
+// Prices in USD (payable in toman at the day rate); old = the video version quoted on 28 Mehr.
+const PRICES = {std: {now: 175, old: 235}, ideal: {now: 350, old: 440}};
+const ROWS = ['ربات بله: ثبت‌نام تولیدکننده و ارسال عکس', 'ساخت خودکار استوری تصویری ۹:۱۶ با لوگو و شماره', 'تأیید هر استوری توسط اپراتور در بله', 'ثبت نام و شماره بیننده قبل از دیدن اطلاعات تماس', 'داشبورد وب به تفکیک صنعت و شهر، با خروجی اکسل', 'قالب استوری', 'نوشتن تیتر و متن استوری با هوش مصنوعی', 'بهبود عکس‌ها با هوش مصنوعی (نور، برش، پس‌زمینه)', 'ثبت نیاز خریدار و خبر به تولیدکننده‌های مرتبط', 'صفحه اختصاصی هر تولیدکننده در وب‌سایت', 'گزارش ماهانه برای هر تولیدکننده', 'پشتیبانی'];
+const TIERS = [
+  {id: 'std', name: 'معمولی', note: 'ربات، استوری تصویری خودکار، ثبت مشتری و داشبورد مدیریت.', v: ['✓', '✓', '✓', '✓', '✓', 'یک قالب', '', '', '', '', '', 'یک ماه']},
+  {id: 'ideal', name: 'ایده‌آل', note: 'همه امکانات نسخه معمولی، به‌علاوه هوش مصنوعی، ثبت نیاز خریدار، صفحه و گزارش ماهانه هر تولیدکننده.', v: ['✓', '✓', '✓', '✓', '✓', 'چند قالب', '✓', '✓', '✓', '✓', '✓', 'یک ماه'], rec: true},
+];
+const fa = n => n.toLocaleString('fa-IR');
+const usd = n => `<span class="en">$${n}</span>`;
+let pick = 'ideal';
+try { pick = localStorage.getItem('ss-tier') || pick; } catch (e) {}
+
+const tiersEl = document.getElementById('tiers');
+tiersEl.innerHTML = TIERS.map(t => `
+  <button class="tier" type="button" data-id="${t.id}" aria-pressed="false">
+    <span class="name">${t.name}${t.rec ? '<span class="badge">پیشنهاد ما</span>' : ''}</span>
+    <span class="note">${t.note}</span>
+    <span class="price">${usd(PRICES[t.id].now)} <s>${usd(PRICES[t.id].old)}</s> <small>یک‌باره</small></span>
+    <ul>${ROWS.map((r, i) => `<li class="${t.v[i] ? '' : 'off'}"><span>${r}</span><b>${t.v[i] || '—'}</b></li>`).join('')}</ul>
+    <span class="pick">انتخاب این گزینه</span>
+  </button>`).join('');
+
+const who = document.getElementById('who'), phone = document.getElementById('phone'), agree = document.getElementById('agree'), go = document.getElementById('go');
+// Same rule as the site's /api/brief: Iranian number → 11 digits (09121234567), or "".
+function normalizePhone(raw) {
+  let d = String(raw).replace(/[۰-۹]/g, c => '۰۱۲۳۴۵۶۷۸۹'.indexOf(c)).replace(/[٠-٩]/g, c => '٠١٢٣٤٥٦٧٨٩'.indexOf(c)).replace(/[\s\-()]/g, '');
+  if (d.startsWith('+98')) d = '0' + d.slice(3);
+  else if (d.startsWith('0098')) d = '0' + d.slice(4);
+  else if (/^98\d{10}$/.test(d)) d = '0' + d.slice(2);
+  else if (/^9\d{9}$/.test(d)) d = '0' + d;
+  return /^0[1-9]\d{9}$/.test(d) ? d : '';
+}
+function render() {
+  const t = TIERS.find(x => x.id === pick) || TIERS[1];
+  tiersEl.querySelectorAll('.tier').forEach(b => {
+    const on = b.dataset.id === t.id;
+    b.setAttribute('aria-pressed', on);
+    b.querySelector('.pick').textContent = on ? '✓ انتخاب شده' : 'انتخاب این گزینه';
+  });
+  document.getElementById('summary').innerHTML = `
+    <div><span>گزینه</span><b>${t.name}</b></div>
+    <div><span>هزینه (یک‌باره)</span><b>${usd(PRICES[t.id].now)}</b></div>
+    <div><span>سرور</span><b>جداگانه</b></div>
+    <div><span>پشتیبانی</span><b>یک ماه</b></div>`;
+  go.disabled = !(agree.checked && who.value.trim() && normalizePhone(phone.value));
+}
+tiersEl.addEventListener('click', e => {
+  const b = e.target.closest('.tier'); if (!b) return;
+  pick = b.dataset.id;
+  try { localStorage.setItem('ss-tier', pick); } catch (err) {}
+  render();
+});
+who.addEventListener('input', render); phone.addEventListener('input', render); agree.addEventListener('change', render);
+phone.addEventListener('blur', () => { document.getElementById('err').hidden = !phone.value.trim() || !!normalizePhone(phone.value); });
+// Sends the approval to the owner's Bale bot through the site's enquiry endpoint; only works on aisanaat.ir.
+document.getElementById('form').addEventListener('submit', async e => {
+  e.preventDefault(); if (go.disabled) return;
+  const t = TIERS.find(x => x.id === pick), tel = normalizePhone(phone.value);
+  go.disabled = true; go.textContent = 'در حال ارسال…';
+  let ok = false;
+  try {
+    const r = await fetch('/api/brief', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
+      kind: 'enquiry', product: 'تأیید پروپوزال ربات صنعت‌گر سلام SS-1405-02',
+      need: `گزینه: ${t.name} · $${PRICES[t.id].now}`, name: who.value.trim(), reach: tel, page: '/proposals/sanatgar-salam'})});
+    ok = r.ok;
+  } catch (err) {}
+  document.getElementById('form').hidden = true;
+  if (ok) { document.getElementById('sent').hidden = false; return; }
+  document.getElementById('msg').textContent = `سلام، پیشنهاد SS-1405-02 را تأیید می‌کنم.\nگزینه: ${t.name} ($${PRICES[t.id].now})\nنام و سمت: ${who.value.trim()}\nشماره تماس: ${tel}`;
+  document.getElementById('stamp').hidden = false;
+});
+document.getElementById('copy').addEventListener('click', async e => {
+  const pre = document.getElementById('msg');
+  try { await navigator.clipboard.writeText(pre.textContent); e.target.textContent = 'کپی شد'; }
+  catch (err) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); e.target.textContent = 'متن انتخاب شد؛ کپی کنید'; }
+});
+render();
+
+// slideshow: the next button sits on the right, so → / swipe left moves forward
+const slides = [...document.querySelectorAll('.slide')], prev = document.getElementById('prev'), next = document.getElementById('next');
+let cur = 0;
+function show(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  slides.forEach((s, k) => { s.classList.toggle('on', k === cur); s.inert = k !== cur; });
+  slides[cur].scrollTop = 0;
+  document.getElementById('count').textContent = `${fa(cur + 1)} / ${fa(slides.length)}`;
+  document.getElementById('bar').style.width = `${(cur + 1) / slides.length * 100}%`;
+  prev.disabled = cur === 0; next.disabled = cur === slides.length - 1;
+}
+prev.onclick = () => show(cur - 1);
+next.onclick = () => show(cur + 1);
+document.addEventListener('keydown', e => {
+  if (e.target.closest('input, textarea')) return;
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(cur + 1); }
+  if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(cur - 1); }
+});
+let x0 = null;
+document.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, {passive: true});
+document.addEventListener('touchend', e => {
+  if (x0 == null) return;
+  const dx = e.changedTouches[0].clientX - x0; x0 = null;
+  if (Math.abs(dx) > 60) show(cur + (dx < 0 ? 1 : -1));
+});
+show(0);
+</script>
+</body></html>
