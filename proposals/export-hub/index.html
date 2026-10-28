@@ -312,27 +312,27 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(-
 </div></section>
 
 <section class="slide"><div class="wrap sec wide">
-  <div class="rail"><span class="k">سرمایه‌گذاری</span><h2>بسته‌ها</h2><p class="muted">قیمت هر بسته هزینه‌ی یک‌باره‌ی ساخت سیستم است. هزینه‌ی سرور و API جداگانه است (اسلاید بعد).</p></div>
+  <div class="rail"><span class="k">سرمایه‌گذاری</span><h2>بسته‌ها</h2><p class="muted">قیمت هر بسته هزینه‌ی یک‌باره‌ی ساخت سیستم است. هزینه‌ی سرور جداگانه است (اسلاید بعد).</p></div>
   <div class="body">
     <div class="tiers" id="tiers"></div>
   </div>
 </div></section>
 
 <section class="slide"><div class="wrap sec">
-  <div class="rail"><span class="k">زیرساخت</span><h2>سرور مورد نیاز هر بسته</h2><p class="muted">قیمت بسته‌ها فقط هزینه‌ی ساخت این جریان است. هزینه‌ی سرور و API ماهانه و جداگانه، بر عهده‌ی شماست.</p></div>
+  <div class="rail"><span class="k">زیرساخت</span><h2>سرور مورد نیاز هر بسته</h2><p class="muted">قیمت بسته‌ها فقط هزینه‌ی ساخت این جریان است. هزینه‌ی ماهانه‌ی سرور جداگانه و بر عهده‌ی شماست؛ ردیاب ICP و موتور محتوا هزینه‌ی API ندارند.</p></div>
   <div class="body">
     <div class="tbl glass"><table>
-      <thead><tr><th>بسته</th><th>CPU</th><th>RAM</th><th>فضای ذخیره</th><th>GPU</th><th>سرور و API، ماهانه (تقریبی)</th></tr></thead>
+      <thead><tr><th>بسته</th><th>CPU</th><th>RAM</th><th>فضای ذخیره</th><th>GPU</th><th>هزینه‌ی ماهانه (تقریبی)</th></tr></thead>
       <tbody>
-        <tr><td>ردیاب ICP</td><td><span class="en">2 vCPU</span></td><td><span class="en">4 GB</span></td><td><span class="en">40 GB SSD</span></td><td>ندارد</td><td class="n">۱۵ تا ۲۵ دلار</td></tr>
-        <tr><td>موتور محتوا</td><td><span class="en">4–8 vCPU</span></td><td><span class="en">16 GB</span></td><td><span class="en">200 GB SSD</span></td><td>ندارد</td><td class="n">۶۰ تا ۱۰۰ دلار</td></tr>
-        <tr><td>موتور کامل تولید محتوا مبتنی بر هوش مصنوعی</td><td><span class="en">8 vCPU</span></td><td><span class="en">32 GB</span></td><td><span class="en">300 GB SSD</span></td><td>طبق روش انتخابی</td><td class="n">۱۰۰ تا ۱۹۰ دلار</td></tr>
+        <tr><td>ردیاب ICP</td><td><span class="en">2 vCPU</span></td><td><span class="en">4 GB</span></td><td><span class="en">40 GB SSD</span></td><td>ندارد</td><td class="n">۱۰ تا ۲۰ دلار <small class="muted">فقط سرور</small></td></tr>
+        <tr><td>موتور محتوا</td><td><span class="en">4–8 vCPU</span></td><td><span class="en">16 GB</span></td><td><span class="en">200 GB SSD</span></td><td>ندارد</td><td class="n">۴۰ تا ۸۰ دلار <small class="muted">فقط سرور</small></td></tr>
+        <tr><td>موتور کامل تولید محتوا مبتنی بر هوش مصنوعی</td><td><span class="en">8 vCPU</span></td><td><span class="en">32 GB</span></td><td><span class="en">300 GB SSD</span></td><td>طبق روش انتخابی</td><td class="n">۱۰۰ تا ۱۹۰ دلار <small class="muted">سرور + API</small></td></tr>
       </tbody>
     </table></div>
     <h3>دو روش برای موتور کامل تولید محتوا مبتنی بر هوش مصنوعی</h3>
     <div class="cols2">
       <div class="box glass"><h3>الف) تولید محتوا با API · پیشنهاد من</h3>
-        <ul class="plain"><li>سرور: <span class="en">8 vCPU · 32 GB RAM · 300 GB SSD</span>، بدون GPU، حدود ۸۰ تا ۱۵۰ دلار در ماه</li><li>API تولید محتوا (حدود ۳۰ محتوای ورودی و ۲۰ تصویر نهایی در ماه): حدود ۲۰ تا ۴۰ دلار در ماه</li></ul>
+        <ul class="plain"><li>سرور: <span class="en">8 vCPU · 32 GB RAM · 300 GB SSD</span>، بدون GPU، حدود ۸۰ تا ۱۵۰ دلار در ماه</li><li>API تولید تصویر (حدود ۲۰ تصویر نهایی در ماه): حدود ۲۰ تا ۴۰ دلار در ماه</li></ul>
         <span class="cost">جمع: حدود ۱۰۰ تا ۱۹۰ دلار در ماه</span></div>
       <div class="box glass out"><h3>ب) GPU اختصاصی</h3>
         <ul class="plain"><li>سرور: <span class="en">8 vCPU · 32–64 GB RAM · 500 GB SSD</span> و یک GPU با <span class="en">24 GB</span> حافظه (<span class="en">RTX 4090</span>)</li><li>خرید: حدود ۳٬۰۰۰ تا ۴٬۰۰۰ دلار یک‌باره (قیمت جهانی؛ در بازار ایران معمولاً بیشتر) به‌اضافه‌ی برق و نگهداری</li><li>یا اجاره‌ی GPU ابری: حدود ۴۰۰ تا ۸۰۰ دلار در ماه</li></ul>
@@ -362,7 +362,7 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(-
         <div class="summary glass" id="summary"></div>
         <ul class="plain terms">
           <li>قیمت بسته فقط هزینه‌ی یک‌باره‌ی ساخت سیستم است.</li>
-          <li>هزینه‌ی ماهانه‌ی سرور و API جداگانه و بر عهده‌ی شماست.</li>
+          <li>هزینه‌ی ماهانه‌ی سرور جداگانه و بر عهده‌ی شماست؛ در موتور کامل، هزینه‌ی API تولید تصویر هم اضافه می‌شود.</li>
           <li>مالکیت همه‌ی محتوا و فایل‌ها با شماست.</li>
         </ul>
       </div>
@@ -445,7 +445,7 @@ function render() {
   document.getElementById('summary').innerHTML = `
     <div><span>بسته</span><b>${t.name}</b></div>
     <div><span>هزینه‌ی ساخت (یک‌باره)</span><b>${price(PRICES[t.id])}</b></div>
-    <div><span>سرور و API</span><b>ماهانه، جداگانه</b></div>
+    <div><span>هزینه‌ی ماهانه</span><b>${t.id === 'full' ? 'سرور + API، جداگانه' : 'سرور، جداگانه'}</b></div>
     <div><span>مدت</span><b>۳ ماه</b></div>`;
   go.disabled = !(agree.checked && who.value.trim() && normalizePhone(phone.value));
 }
