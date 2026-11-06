@@ -359,6 +359,7 @@ input, textarea, select { font: inherit; }
 
 /* ── Working process: a ladder of glass rungs ── */
 .steps { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s-4); padding-top: 44px; }
+.steps--4 { grid-template-columns: repeat(4, 1fr); }
 .steps::before { content: ""; position: absolute; top: 0; inset-inline: 0; height: 3px; border-radius: 3px; background: var(--grad); opacity: 0.85; }
 .steps li { padding: var(--s-5); border-radius: var(--r-card); }
 .steps li:hover { transform: translateY(-6px); }
