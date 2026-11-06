@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/Estedad-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/css/tokens.css?v=6">
-<link rel="stylesheet" href="../assets/css/site.css?v=6">
+<link rel="stylesheet" href="../assets/css/site.css?v=7">
 </head>
 <body data-root="../">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="mark-grad" x1="0" x2="1"><stop offset="0" style="stop-color:var(--a1)"/><stop offset=".55" style="stop-color:var(--a2)"/><stop offset="1" style="stop-color:var(--a3)"/></linearGradient></defs></svg>
@@ -57,52 +57,23 @@
 </section>
 
 <section class="section" style="padding-top:0">
-  <div class="wrap">
-    <article class="prod" id="anbar">
-      <div class="prod__copy">
-        <div class="prod__name"><h2 class="h2">انبار</h2><span class="tag">رایگان · متن‌باز</span></div>
-        <p class="prod__kind">داشبورد فضای ابری، روی کامپیوتر خودتان</p>
-        <p>فضای ابری‌تان (لیارا، آروان‌کلاد، Amazon S3، MinIO، گوگل درایو، Dropbox و…) را مثل یک پوشه نشان می‌دهد: آپلود، دانلود، جستجو، پوشه و حذف، با رابط فارسی. فقط روی همین کامپیوتر باز می‌شود و کلیدها از دستگاه شما بیرون نمی‌روند.</p>
-        <div class="prod__ctas">
-          <a class="btn btn--primary" href="../assets/downloads/anbar.zip" download>دانلود انبار <span class="ltr">(zip · ۱۰۰ KB)</span></a>
-          <a class="btn btn--ghost" href="#setup">راه‌اندازی</a>
-        </div>
+  <div class="wrap dls">
+    <article class="idea dl">
+      <a class="dl__img" href="anbar.html" tabindex="-1" aria-hidden="true"><img src="../assets/media/anbar-files.png" width="1200" height="760" loading="lazy" alt=""></a>
+      <div class="dl__body">
+        <h2><a href="anbar.html">انبار</a></h2>
+        <p>فضای ابری‌تان (لیارا، آروان، S3، گوگل درایو…) مثل یک پوشه، روی کامپیوتر خودتان.</p>
+        <div class="dl__ctas"><a class="btn btn--primary btn--small" href="../assets/downloads/anbar.zip" download>دانلود</a><a class="btn btn--ghost btn--small" href="anbar.html">جزئیات و راه‌اندازی</a></div>
       </div>
-      <figure class="prod__demo rec">
-        <div class="rec__bar" aria-hidden="true"><i></i><i></i><i></i><span>انبار</span></div>
-        <img src="../assets/media/anbar-files.png" width="1200" height="760" loading="lazy" alt="صفحهٔ فایل‌های انبار: پوشه‌ها و فایل‌ها با دکمهٔ دانلود و حذف" style="width:100%;height:auto;display:block">
-        <figcaption>صفحهٔ فایل‌ها با داده‌های نمونه.</figcaption>
-      </figure>
     </article>
-
-    <article class="prod" id="pele">
-      <div class="prod__copy">
-        <div class="prod__name"><h2 class="h2">پله</h2><span class="tag">رایگان · متن‌باز</span></div>
-        <p class="prod__kind">مدیریت کار تیمی، فارسی و بدون VPN</p>
-        <p>بورد کارها با کشیدن و رها کردن، نمای فهرست و تقویم شمسی، جلسه با یادآوری، یادداشت جلسه که هر خطش کار می‌شود، فرایندهای چندمرحله‌ای، مشتریان و اعلان Telegram. نسخهٔ خودتان را در حدود ۱۵ دقیقه روی حساب‌های رایگان Supabase و Vercel بالا می‌آورید.</p>
-        <div class="prod__ctas">
-          <a class="btn btn--primary" href="https://github.com/taleghanibiz/pele-open" rel="noopener">پله در GitHub</a>
-          <a class="btn btn--ghost" href="https://github.com/taleghanibiz/pele-open/archive/refs/heads/main.zip">دانلود zip</a>
-        </div>
+    <article class="idea dl">
+      <a class="dl__img" href="pele.html" tabindex="-1" aria-hidden="true"><img class="dl__logo" src="../assets/media/pele-logo.svg" width="64" height="64" loading="lazy" alt=""></a>
+      <div class="dl__body">
+        <h2><a href="pele.html">پله</a></h2>
+        <p>مدیریت کار تیمی، فارسی و بدون VPN؛ روی Supabase و Vercel خودتان.</p>
+        <div class="dl__ctas"><a class="btn btn--primary btn--small" href="https://github.com/taleghanibiz/pele-open" rel="noopener">GitHub</a><a class="btn btn--ghost btn--small" href="pele.html">جزئیات</a></div>
       </div>
-      <figure class="prod__demo rec">
-        <div class="rec__bar" aria-hidden="true"><i></i><i></i><i></i><span>پله</span></div>
-        <img src="../assets/media/pele-logo.svg" width="64" height="64" alt="نشان پله" style="width:min(160px,40%);height:auto;display:block;margin:var(--s-8) auto">
-        <figcaption>راهنمای قدم‌به‌قدم راه‌اندازی در صفحهٔ GitHub پله است.</figcaption>
-      </figure>
     </article>
-  </div>
-</section>
-
-<section class="section" id="setup" style="padding-top:0">
-  <div class="wrap">
-    <div class="intro"><h2 class="h2">راه‌اندازی انبار</h2></div>
-    <ol class="steps steps--4">
-      <li><b>Python</b> را از <a class="inline-link ltr" href="https://www.python.org/downloads/" rel="noopener">python.org</a> نصب کنید (در ویندوز تیک «Add python.exe to PATH» را بزنید).</li>
-      <li><b>rclone</b> را از <a class="inline-link ltr" href="https://rclone.org/downloads/" rel="noopener">rclone.org</a> نصب کنید. ویندوز: <span class="ltr">rclone.exe</span> را کنار <span class="ltr">server.py</span> بگذارید. مک: <span class="ltr">brew install rclone</span> · لینوکس: <span class="ltr">sudo apt install rclone</span></li>
-      <li>zip را باز کنید. ویندوز: روی <span class="ltr">start.bat</span> دوبار کلیک کنید. مک و لینوکس: در همان پوشه <span class="ltr">python3 server.py</span></li>
-      <li>مرورگر روی <span class="ltr">127.0.0.1:5572</span> باز می‌شود و راهنمای اتصال فضای ابری را نشان می‌دهد. فضای ابری ایرانی با VPN روشن معمولاً وصل نمی‌شود.</li>
-    </ol>
   </div>
 </section>
 
