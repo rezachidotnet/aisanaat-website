@@ -226,6 +226,10 @@ button:disabled{opacity:.6;cursor:wait}
 <p class="ask">وقتی در AutoCAD گره جا نمی‌شود چه می‌کنید: گوی بزرگ‌تر (چه اندازه‌هایی دارید؟)، تغییر زاویه یا شبکه، یا چیز دیگری؟</p>
 <textarea name="q11" rows="3" placeholder="پاسخ شما…" aria-label="پاسخ سؤال 11"></textarea></div>
 
+<div class="q"><b>توضیحات اضافه</b>
+<p class="note">هر چیز دیگری که درباره‌ی این گزارش یا سازه‌یار می‌خواهید بگویید.</p>
+<textarea name="extra" rows="5" placeholder="توضیحات شما…" aria-label="توضیحات اضافه"></textarea></div>
+
 <div class="send">
 <label>نام شما <input name="name" required maxlength="120" autocomplete="name"></label>
 <input name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
@@ -247,7 +251,7 @@ button:disabled{opacity:.6;cursor:wait}
     var answers={};Array.prototype.forEach.call(f.querySelectorAll('textarea'),function(t){if(t.value.trim())answers[t.name]=t.value.trim();});
     var name=f.elements.name.value.trim();
     if(!name){st.textContent='لطفاً نام خود را بنویسید.';f.elements.name.focus();return;}
-    if(!Object.keys(answers).length){st.textContent='هنوز به هیچ سؤالی پاسخ نداده‌اید.';return;}
+    if(!Object.keys(answers).length){st.textContent='هنوز چیزی ننوشته‌اید.';return;}
     var b=f.querySelector('button');b.disabled=true;st.textContent='در حال ارسال…';
     fetch('/api/sazeyar-answer',{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({report:'sazeyar-40507111',name:name,answers:answers,website:f.elements.website.value})})
