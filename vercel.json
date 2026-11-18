@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/api/sazeyar-answer", "destination": "https://sazeyar-answers.vercel.app/api/answer" }
+  ]
+}
