@@ -226,6 +226,44 @@ button:disabled{opacity:.6;cursor:wait}
 <p class="ask">وقتی در AutoCAD گره جا نمی‌شود چه می‌کنید: گوی بزرگ‌تر (چه اندازه‌هایی دارید؟)، تغییر زاویه یا شبکه، یا چیز دیگری؟</p>
 <textarea name="q11" rows="3" placeholder="پاسخ شما…" aria-label="پاسخ سؤال 11"></textarea></div>
 
+<p class="note"><b>بخش ۳: سقف روی ستون بتنی</b></p>
+
+<div class="q"><b class="n">12</b><b>طراحی ستون بتنی</b>
+<p>در <span class="l" dir="ltr">40506161</span> ستون‌ها بتنی هستند (<span class="l" dir="ltr">C-500-500-20T25</span>، بتن <span class="l" dir="ltr">C30</span>) و در <span class="l" dir="ltr">40502263</span> ستون‌ها اصلاً در مدل نیستند. سازه‌یار الان ستون بتنی را طراحی یا کنترل نمی‌کند.</p>
+<p class="ask">آیا ستون بتنی را شما کنترل می‌کنید یا مهندس سازه‌ی کارفرما؟ اگر شما، با چه آیین‌نامه‌ای (مبحث ۹ / <span class="l" dir="ltr">ACI</span>)؟</p>
+<textarea name="q12" rows="3" placeholder="پاسخ شما…" aria-label="پاسخ سؤال 12"></textarea></div>
+
+<div class="q"><b class="n">13</b><b>مقطع‌های ستون بتنی</b>
+<p class="ask">چه مقطع‌ها و آرماتورهایی معمولاً دارید (مثلاً <span class="l" dir="ltr">400×400</span>، <span class="l" dir="ltr">500×500</span>، تعداد و قطر میلگرد) و چه رده‌ی بتنی (<span class="l" dir="ltr">C25 / C30 / C35</span>)؟</p>
+<textarea name="q13" rows="3" placeholder="پاسخ شما…" aria-label="پاسخ سؤال 13"></textarea></div>
+
+<div class="q"><b class="n">14</b><b>اتصال سقف به سر ستون بتنی</b>
+<p class="ask">سقف روی ستون بتنی مفصلی می‌نشیند یا گیردار (صفحه‌ی ستون، بولت کاشتنی)؟ ستون پای خود گیردار فرض می‌شود؟</p>
+<textarea name="q14" rows="3" placeholder="پاسخ شما…" aria-label="پاسخ سؤال 14"></textarea></div>
+
+<div class="q"><b class="n">15</b><b>ضریب رفتار <span class="l" dir="ltr">Ru</span> روی ستون بتنی</b>
+<p>در <span class="l" dir="ltr">40506161</span> ضریب زلزله با <span class="l" dir="ltr">Ru = 2</span> است (<span class="l" dir="ltr">0.35 × 2.75 / 2 = 0.481</span>) ولی در <span class="l" dir="ltr">40502263</span> با <span class="l" dir="ltr">Ru = 2.5</span>.</p>
+<p class="ask">برای سقف روی ستون بتنی کدام درست است و چرا فرق دارند؟</p>
+<textarea name="q15" rows="3" placeholder="پاسخ شما…" aria-label="پاسخ سؤال 15"></textarea></div>
+
+<p class="note"><b>بخش ۴: تداخل قطعات در گوی (طبق بلوک‌های <span class="l" dir="ltr">Element Data</span> شما)</b></p>
+<p class="note">گوی نیرو نمی‌برد: کشش روی پیچ و فشار روی اسلیو است. تداخل فقط هندسی است: اسلیو، بشقابک و لوله‌ی دو عضو با زاویه‌ی کم روی گوی کوچک به هم می‌خورند.</p>
+
+<div class="q"><b class="n">16</b><b>طول پیچ داخل گوی</b>
+<p>اگر «<span class="l" dir="ltr">Bolt Length</span>» عمق رزوه در گوی از نشیمن اسلیو باشد، در پروژه‌ی ساخته‌شده‌ی <span class="l" dir="ltr">40505112</span> رزوه‌های <span class="l" dir="ltr">M20</span> با زاویه‌ی <span class="l" dir="ltr">60°</span> داخل گوی <span class="l" dir="ltr">80</span> به هم می‌رسند (۱۹۱ گره)، در حالی که شما همان‌جا گوی <span class="l" dir="ltr">80</span> گذاشته‌اید.</p>
+<p class="ask">«<span class="l" dir="ltr">Bolt Length</span>» دقیقاً چیست؟ تداخل رزوه‌ها داخل گوی را کنترل می‌کنید؟</p>
+<textarea name="q16" rows="3" placeholder="پاسخ شما…" aria-label="پاسخ سؤال 16"></textarea></div>
+
+<div class="q"><b class="n">17</b><b>قطر اسلیو <span class="l" dir="ltr">Ø81</span></b>
+<p>دو عضو <span class="l" dir="ltr">168</span> با زاویه‌ی <span class="l" dir="ltr">60°</span> حتی روی گوی <span class="l" dir="ltr">160</span> حدود <span class="l" dir="ltr">1 mm</span> هم‌پوشانی اسلیو دارند (۲۹ گره).</p>
+<p class="ask">آیا <span class="l" dir="ltr">Ø81</span> قطر گوشه‌ی شش‌ضلعی است (دهانه‌ی آچار کوچک‌تر)؟ این مقدار هم‌پوشانی را قبول می‌کنید؟</p>
+<textarea name="q17" rows="3" placeholder="پاسخ شما…" aria-label="پاسخ سؤال 17"></textarea></div>
+
+<div class="q"><b class="n">18</b><b>اندازه‌ی گوی در نرم‌افزار قبلی</b>
+<p>در نرم‌افزار قبلی گوی با نیروی عضو بزرگ می‌شود (تقریباً بیش از <span class="l" dir="ltr">12 t → 100</span>، <span class="l" dir="ltr">20 t → 120</span>، <span class="l" dir="ltr">36 t → 140</span>، <span class="l" dir="ltr">112 t → 160</span>).</p>
+<p class="ask">وقتی گوی نیرو نمی‌برد، این قانون از کجاست؟ اندازه‌ی گوی را با چه چیزی انتخاب می‌کنید؟</p>
+<textarea name="q18" rows="3" placeholder="پاسخ شما…" aria-label="پاسخ سؤال 18"></textarea></div>
+
 <div class="q"><b>توضیحات اضافه</b>
 <p class="note">هر چیز دیگری که درباره‌ی این گزارش یا سازه‌یار می‌خواهید بگویید.</p>
 <textarea name="extra" rows="5" placeholder="توضیحات شما…" aria-label="توضیحات اضافه"></textarea></div>
